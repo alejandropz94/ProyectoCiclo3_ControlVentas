@@ -2,4 +2,4 @@
 
 ## Sistema de control de Control de Ventas
 
-_proyecto para la construcción de una aplicación software que permita controlar las ventas físicas y virtuales de una empresa de manufactura y hacerles el correspondiente seguimiento.
+_Proyecto para la construcción de una aplicación software que permita controlar las ventas físicas y virtuales de una empresa de manufactura y hacerles el correspondiente seguimiento._
