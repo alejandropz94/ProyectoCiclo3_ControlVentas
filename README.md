@@ -10,3 +10,5 @@ _Proyecto para la construcción de una aplicación software que permita controla
 Luis Alberto Parra Linares: Ingeniero de Sistemas Universidad de los Llanos, con conocimientos en desarrollo web y bases de datos.
 
 Cenidier Ospina Galeano: Ingeniero en Telecomunicaciones, con conocimiento en lenguaje de programación java y python.
+
+Andrea Rios Cano: Ingenieria Electronica, con conocimientos en lenguajes de programación Java y Python.
