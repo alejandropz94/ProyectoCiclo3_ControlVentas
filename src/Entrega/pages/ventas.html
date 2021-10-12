@@ -93,7 +93,7 @@
                     <br>
                     <br>
                     <div class="row justify-content-md-center">
-                        <div class="col col-lg-10">
+                        <div class="col col-lg-12">
                             <div class="row">
                                 <div class="col-auto">
                                     <button class="btn btn-success mb-3" data-bs-toggle="modal"
@@ -101,19 +101,8 @@
                                         onclick="document.getElementById('tituloModal').innerHTML = 'Ingresa una venta'"
                                         >Ingresar</button>
                                 </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-primary mb-3" data-bs-toggle="modal"
-                                        data-bs-target="#modalProducto2" 
-                                        onclick="document.getElementById('tituloModal').innerHTML = 'Actualizar venta'"
-                                        >Actualizar</button>
-                                </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-danger mb-3" data-bs-toggle="modal"
-                                        data-bs-target="#modalProducto3" 
-                                        onclick="document.getElementById('tituloModal').innerHTML = 'Eliminar venta'"
-                                        >Eliminar</button>
-                                </div>
-                                <div class="col-auto offset-md-4 offset-lg-3">
+                                
+                                <div class="col-auto offset-md-4 offset-lg-7">
                                     <input type="text" class="form-control" id="campoBuscar" placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
@@ -123,52 +112,40 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col">X</th>
-                                        <th scope="col">Numero de venta</th>
+                                        <!-- <th scope="col">X</th> -->
+                                        <th scope="col">Codigo Venta</th>
+                                        <th scope="col">ID Producto</th>
+                                        <th scope="col">Medio de Pago</th>
+                                        <th scope="col">Fecha de Venta</th>
+                                        <th scope="col">Cliente</th>
                                         <th scope="col">ID Cliente</th>
-                                        <th scope="col">Nombre Cliente</th>
-                                        <th scope="col">Fecha pago</th>
+                                        <th scope="col">Vendedor</th>
                                         <th scope="col">Estado</th>
-                                        <th scope="col">Responsable</th>
+                                        <th scope="col">Valor Total</th>
+                                        <th scope="colgroup">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row"><input type="checkbox"></th>
+                                        <!-- <th scope="row"><input type="checkbox"></th> -->
+                                        
                                         <td>0001</td>
-                                        <td>123456789</td>
-                                        <td>Juanito</td>
+                                        <td>0010</td>
+                                        <td>Tarjeta de credito</td>
                                         <td>10-Junio-2021</td>
-                                        <td>Cancelado</td>
+                                        <td>Juanito</td>
+                                        <td>123456789</td>
                                         <td>Andrea</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><input type="checkbox"></th>
-                                        <td>0002</td>
-                                        <td>987654321</td>
-                                        <td>Fulanito</td>
-                                        <td>20-Agosto-2021</td>
                                         <td>Cancelado</td>
-                                        <td>Enuar</td>
+                                        <td>25000</td>
+                                        <td>
+                                            <div class="btngroup btn-group-sm">
+                                                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                              </div>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row"><input type="checkbox"></th>
-                                        <td>0003</td>
-                                        <td>313552889</td>
-                                        <td>Pepito</td>
-                                        <td>16-Septiembre-2021</td>
-                                        <td>Enviado</td>
-                                        <td>Andrea</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><input type="checkbox"></th>
-                                        <td>0004</td>
-                                        <td>121477788</td>
-                                        <td>Marino</td>
-                                        <td>30-Septiembre-2021</td>
-                                        <td>Cancelado</td>
-                                        <td>Andrea</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -192,11 +169,19 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
            <div class="row">
                
                <div class="col">
+<<<<<<< HEAD
                    <label for="precio" class="form-label">Codigo Venta:</label>
                    <input type="text" class="form-control" placeholder="ingresa codigo">
                </div>
                <div class="col">
                    <label for="precio" class="form-label">Valor Total:</label>
+=======
+                   <label for="precio" class="form-label">Codigo Venta</label>
+                   <input type="text" class="form-control" placeholder="ingresa codigo">
+               </div>
+               <div class="col">
+                   <label for="precio" class="form-label">ID Producto:</label>
+>>>>>>> df22b47209f50f52467fc28a5e3235efa64f36db
                    <input type="number" class="form-control" placeholder="ingresa el Valor">
                    
                </div>
@@ -220,13 +205,18 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="row 2">
                 
                 <div class="col">
+<<<<<<< HEAD
                     <label for="precio" class="form-label">Fecha de Pago:</label>
+=======
+                    <label for="precio" class="form-label">Fecha de Venta:</label>
+>>>>>>> df22b47209f50f52467fc28a5e3235efa64f36db
                     <input type="date" class="form-control" placeholder="100000">
                 </div>
 
                 <div class="col">
                     <label for="precio" class="form-label">Cliente:</label>
                     <input type="text" class="form-control">                                          
+<<<<<<< HEAD
                 </div>                
              
                 <div class="col">
@@ -252,6 +242,43 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 
             </div>
+=======
+                </div>
+                
+                <div class="col">
+                    <label for="precio" class="form-label">ID Cliente:</label>
+                    <input type="text" class="form-control">                                          
+                </div>
+             
+                                          
+               
+               <div class="mb-3">
+                   <label for="descripcion" class="form-label">Vendedor:</label>
+                   <input type="text" class="form-control" id="descripcion">                   
+               </div>
+
+               <div class="col">
+                <label for="precio" class="form-label">Estado:</label>
+                <select class="form-select">
+                 <option disabled selected>Seleccione</option>
+                 <option value="0">Procesado</option>
+                 <option value=" 1">Cancelado</option>
+                 <option value="0">Entregado</option>
+             </select> 
+            </div>
+
+            <div class="col">
+                <label for="precio" class="form-label">Valor Total:</label>
+                <input type="number" class="form-control" placeholder="ingresa el Valor">
+                
+            </div>                                    
+         
+           </div>
+              
+
+
+            </div>
+>>>>>>> df22b47209f50f52467fc28a5e3235efa64f36db
         
 
 
@@ -279,31 +306,50 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
            <div class="row">
                
                <div class="col">
+<<<<<<< HEAD
                    <label for="precio" class="form-label">Identificador Venta:</label>
                    <input type="text" class="form-control" placeholder="ingresa codigo venta">
+=======
+                   <label for="precio" class="form-label">Codigo Venta</label>
+                   <input type="text" class="form-control" placeholder="ingresa codigo">
+>>>>>>> df22b47209f50f52467fc28a5e3235efa64f36db
                </div>
                <div class="col">
-                   <label for="precio" class="form-label">Valor Total:</label>
+                   <label for="precio" class="form-label">IDE Producto:</label>
                    <input type="number" class="form-control" placeholder="ingresa el Valor">
+                   
                </div>
+
+               <div class="col">
+                <label for="precio" class="form-label">Medio de pago:</label>
+                <select class="form-select">
+                    <option disabled selected>Seleccione</option>
+                    <option value="0">Efetivo</option>
+                    <option value=" 1">Targeta de credito</option>
+                    
+                </select>
+                
+            </div>
            </div>
        </div>
+       
        
 
         <div class="modal-body">
             <div class="row 2">
                 
                 <div class="col">
-                    <label for="precio" class="form-label">Fecha de Pago:</label>
+                    <label for="precio" class="form-label">Fecha de Venta:</label>
                     <input type="date" class="form-control" placeholder="100000">
                 </div>
 
                 <div class="col">
                     <label for="precio" class="form-label">Cliente:</label>
                     <input type="text" class="form-control">                                          
-                </div>                
-             
+                </div>
+                
                 <div class="col">
+<<<<<<< HEAD
                    <label for="precio" class="form-label">Estado:</label>
                    <select class="form-select">
                     <option disabled selected>Seleccione</option>
@@ -313,12 +359,34 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                 </select> 
                </div>
                <br/>
+=======
+                    <label for="precio" class="form-label">IDE Cliente:</label>
+                    <input type="text" class="form-control">                                          
+                </div>
+             
+                                          
+>>>>>>> df22b47209f50f52467fc28a5e3235efa64f36db
                
                <div class="mb-3">
                    <label for="descripcion" class="form-label">Vendedor:</label>
-                   <input type="text" class="form-control" id="descripcion">
+                   <input type="text" class="form-control" id="descripcion">                   
                </div>
-                                    
+
+               <div class="col">
+                <label for="precio" class="form-label">Estado:</label>
+                <select class="form-select">
+                 <option disabled selected>Seleccione</option>
+                 <option value="0">Procesado</option>
+                 <option value=" 1">Cancelado</option>
+                 <option value="0">Entregado</option>
+             </select> 
+            </div>
+
+            <div class="col">
+                <label for="precio" class="form-label">Valor Total:</label>
+                <input type="number" class="form-control" placeholder="ingresa el Valor">
+                
+            </div>                                    
          
            </div>
               
