@@ -12,7 +12,7 @@ function ModalEliminarProducto() {
                 Descripción: Producto 001 ?
             </div>
             <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" className="btn btn-danger">Eliminar</button>
             </div>
         </div>
