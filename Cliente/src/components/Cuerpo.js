@@ -1,6 +1,8 @@
 import React from 'react'
 import '../Style/estilos.css'
-import TopHeader from './TopHeader';
+import CuerpoTablaUsuario from './CuerpoTablaUsuario';
+import EncabezadoTablaUsuario from './EncabezadoTablaUsuario';
+import SeleccionOpcion from './SelecccionOpcion';
 
 
 function Cuerpo () {
@@ -24,58 +26,11 @@ function Cuerpo () {
                 </div>
               </div>
               <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">N° Cédula</th>
-                    <th scope="col">Nombre y Apellido</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col" id="estado">Estado</th>
-                  </tr>
-                </thead>
+                <EncabezadoTablaUsuario></EncabezadoTablaUsuario>
                 <tbody>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td>1110552354</td>
-                    <td>Juan Martinez</td>
-                    <td>Vendedor</td>
-                    <td>
-                      <select className="form-select">
-                        <option disabled selected>Seleccione</option>
-                        <option value=" 0">Autorizado</option>
-                        <option value="0">Pendiente</option>
-                        <option value=" 0">No autorizado</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td>40768952</td>
-                    <td>Priscila Maldonado</td>
-                    <td>Vendedora</td>
-                    <td>
-                      <select className="form-select">
-                        <option disabled selected>Seleccione</option>
-                        <option value=" 0">Autorizado</option>
-                        <option value="0">Pendiente</option>
-                        <option value=" 0">No autorizado</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td>9245698</td>
-                    <td>Antonia Martinez</td>
-                    <td>Vendedora</td>
-                    <td>
-                      <select className="form-select">
-                        <option disabled selected>Seleccione</option>
-                        <option value=" 0">Autorizado</option>
-                        <option value="0">Pendiente</option>
-                        <option value=" 0">No autorizado</option>
-                      </select>
-                    </td>
-                  </tr>
+                  <CuerpoTablaUsuario></CuerpoTablaUsuario>
+                  <CuerpoTablaUsuario></CuerpoTablaUsuario>
+                  <CuerpoTablaUsuario></CuerpoTablaUsuario>
                 </tbody>
               </table>
             </div>
