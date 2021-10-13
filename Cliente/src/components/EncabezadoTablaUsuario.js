@@ -10,6 +10,7 @@ function EncabezadoTablaUsuario() {
                 <th scope="col">Nombre y Apellido</th>
                 <th scope="col">Rol</th>
                 <th scope="col" id="estado">Estado</th>
+                <th scope="colgroup">Acciones</th>
             </tr>
       </thead>
         

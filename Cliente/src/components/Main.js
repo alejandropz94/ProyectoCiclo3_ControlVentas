@@ -1,6 +1,6 @@
 import React from 'react'
 import TopHader from './TopHeader'
-import Cuerpo from './Cuerpo'
+
 
 function Main() {
     return (
