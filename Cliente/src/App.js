@@ -11,7 +11,7 @@ import Login from './components/Login';
 import Main from './components/Main';
 import MainUser from './components/MainUser';
 import MainVentas from './components/MainVentas';
-import Ventas from './components/Ventas';
+
 
 function App() {
   return (
