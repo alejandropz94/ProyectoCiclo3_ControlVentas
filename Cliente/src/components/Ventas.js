@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Style/estilos.css';
+import '../Style/estilos.css';
 import BotonIngresarVenta from './BotonIngresarVenta';
 import TablaVentas from './TablaVentas';
 import EncabezadoTablaVentas from './EncabezadoTablaVentas';

@@ -7,7 +7,7 @@ function BotonIngresarVenta() {
         <button 
             className ="btn btn-success mb-3" 
             data-bs-toggle="modal" 
-            data-bs-target="#modalUsuario"
+            data-bs-target="#ModalVentas"
             >
             Ingresar
         </button>
