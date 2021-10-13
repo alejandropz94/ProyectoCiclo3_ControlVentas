@@ -10,6 +10,8 @@ import Head from './components/Head';
 import Login from './components/Login';
 import Main from './components/Main';
 import MainUser from './components/MainUser';
+import MainVentas from './components/MainVentas';
+import Ventas from './components/Ventas';
 
 function App() {
   return (
@@ -17,7 +19,7 @@ function App() {
       <Switch>
         <Route path="/ventas">
           <Head></Head>
-          <Main></Main>
+          <MainVentas></MainVentas>
         </Route>
 
         <Route path="/productos">

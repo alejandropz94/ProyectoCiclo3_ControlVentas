@@ -10,7 +10,7 @@ import ModalFooter from './ModalFooter';
 import ModalVentas from './ModalVentas';
 
 
-function ventas () {
+function Ventas () {
     return (
       <Fragment>
         <div className = "col-xl-10 col-md-10">
@@ -55,4 +55,4 @@ function ventas () {
     );
 }
 
-export default ventas
+export default Ventas
