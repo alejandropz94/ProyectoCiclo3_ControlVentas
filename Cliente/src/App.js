@@ -5,9 +5,11 @@ import {
   Route
 } from 'react-router-dom';
 import './App.css';
+import './Style/estilos.css';
 import Head from './components/Head';
 import Login from './components/Login';
 import Main from './components/Main';
+import MainUser from './components/MainUser';
 
 function App() {
   return (
@@ -24,8 +26,10 @@ function App() {
         </Route>
 
         <Route path="/usuarios">
-          <Head></Head>
-          <Main></Main>
+          
+            <Head> </Head>
+            <MainUser></MainUser>
+          
         </Route>
 
         <Route exact path="/">
