@@ -1,6 +1,6 @@
 import React from 'react'
-import BotonDangerUsuario from './BotonDangerUsuario';
-import BotonWarningUsuario from './BotonWarningUsuario';
+import ActualizarVenta from './ActualizarVenta';
+import EliminarVenta from './EliminarVenta';
 import SeleccionEstado from './SeleccionEstado';
 import SeleccionMedioPago from './SeleccionMedioPago';
 import { Link } from 'react-router-dom'
@@ -10,19 +10,19 @@ function TablaVentas() {
         
         <tr>
             
-                <td ></td>
-                <td ></td>
-                <td ><SeleccionMedioPago></SeleccionMedioPago></td>
-                <td ></td>
-                <td ></td>
-                <td ></td>
-                <td ></td>
-                <td ><SeleccionEstado></SeleccionEstado></td>
-                <td></td>
+                <td >Dato</td>
+                <td >Dato</td>
+                <td >Dato</td>
+                <td >Dato</td>
+                <td >Dato</td>
+                <td >Dato</td>
+                <td >Dato</td>
+                <td >Dato</td>
+                <td>Dato</td>
                 <td>
                     <div className="btn-group btn-group-sm">
-                        <BotonWarningUsuario></BotonWarningUsuario>
-                        <BotonDangerUsuario></BotonDangerUsuario>
+                        <ActualizarVenta></ActualizarVenta>
+                        <EliminarVenta></EliminarVenta>
                     </div>
                     
                 </td>

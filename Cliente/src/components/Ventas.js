@@ -8,7 +8,7 @@ import { Fragment } from 'react/cjs/react.production.min';
 import ModalTitle from './ModalTitle';
 import ModalFooter from './ModalFooter';
 import ModalVentas from './ModalVentas';
-
+import ModalEliminarVenta from './ModalEliminarVenta';
 
 function Ventas () {
     return (
@@ -35,7 +35,7 @@ function Ventas () {
         </div>
         {/* Modal Fade */}
         <div  className="modal fade"
-              id="modalUsuario"
+              id="ModalVentas"
               tabindex="-1"
               data-bs-backdrop="static"
               data-bs-keyboard="false"
@@ -50,6 +50,20 @@ function Ventas () {
             </div>
           </div>
         </div>
+        <div className="modal fade"
+        id="ModalEliminar"
+        tabindex="-1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <ModalEliminarVenta></ModalEliminarVenta>
+          </div>
+        </div>
+      </div>
       </Fragment>
         
     );
