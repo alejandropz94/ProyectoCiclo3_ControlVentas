@@ -1,5 +1,5 @@
 import React from 'react'
-import TopHader from './TopHeader'
+import TopHader from '../TopHeader'
 import Ventas from './Ventas'
 
 function MainVentas () {
