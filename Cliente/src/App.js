@@ -11,6 +11,7 @@ import Login from './components/Login';
 import Main from './components/Main';
 import MainUser from './components/MainUser';
 import MainVentas from './components/MainVentas';
+import MainProducto from './components/productos/MainProductos';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 
         <Route path="/productos">
           <Head></Head>
-          <Main></Main>
+          <MainProducto></MainProducto>
         </Route>
 
         <Route path="/usuarios">

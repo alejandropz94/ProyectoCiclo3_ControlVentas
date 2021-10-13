@@ -3,7 +3,7 @@ import '../Style/estilos.css';
 import BotonIngresarVenta from './BotonIngresarVenta';
 import TablaVentas from './TablaVentas';
 import EncabezadoTablaVentas from './EncabezadoTablaVentas';
-import { Link } from 'react-router-dom'
+
 import { Fragment } from 'react/cjs/react.production.min';
 import ModalTitle from './ModalTitle';
 import ModalFooter from './ModalFooter';
