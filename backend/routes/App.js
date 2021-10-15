@@ -18,7 +18,7 @@ app.get("/getVentas", ventas.getVentas);
 
 app.post("/addVenta", ventas.addVenta);
 
-app.put("/editVenta", productos.editVenta);
+app.put("/editVenta", ventas.editVenta);
 
 app.delete("/deleteVenta", ventas.deleteVenta);
 
@@ -26,13 +26,9 @@ app.delete("/deleteVenta", ventas.deleteVenta);
 
 
 
-
-<<<<<<< HEAD
-
-
-
-=======
 app.get("/getUsuarios", usuario.getUsuarios);
 app.post("/addProducto", usuario.addUsuario);
 
 app.put("/editProducto", usuario.editUsuario);
+
+module.exports = app;
