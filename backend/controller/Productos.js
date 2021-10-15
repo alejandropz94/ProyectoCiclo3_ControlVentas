@@ -22,11 +22,11 @@ let getProductos = async function(req, res) {
 }
 
 let addProducto = async function(req, res) {
-    const {descripcion, valor_unitario, estado} = req.body;
+    const {descripcion, valor_unitario, disponible} = req.body;
     const producto = await new Producto({
         descripcion,
         valor_unitario,
-        estado
+        disponible
     });
 
     producto.save((err, data) => {
@@ -42,9 +42,9 @@ let addProducto = async function(req, res) {
 }
 
 let editProducto = async function (req, res) {
-    const { _id, descripcion, valor_unitario, estado } = req.body;
+    const { _id, descripcion, valor_unitario, disponible } = req.body;
     const editProducto = {
-        descripcion, valor_unitario, estado
+        descripcion, valor_unitario, disponible
     }
     const producto = await Producto.updateOne({_id: _id}, editProducto);
     res.send("ok")

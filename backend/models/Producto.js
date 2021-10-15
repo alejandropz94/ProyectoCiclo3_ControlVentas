@@ -5,7 +5,7 @@ const Producto = new Schema({
   id: ObjectId,
   descripcion: { type: String, require: true},
   valor_unitario: { type: Number, require: true},
-  estado: {type: Boolean, require: true}
+  disponible: {type: Boolean, require: true}
 });
 
 module.exports = model('Producto', Producto);
