@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../Style/estilos.css'
 import HeaderTablaProducto from './HeaderTablaProducto';
 import { Fragment } from 'react/cjs/react.production.min';
-import ModalHeader from './ModalHeader';
-import ModalBody from './ModalBody';
-import ModalFooter from './ModalFooter';
+import ModalProducto from './ModalProducto';
 import FilaTabla from './FilaTabla';
 import ModalEliminarProducto from './ModalEliminarProducto';
 
 function Cuerpo() {
+
+  const [tituloModal, setTituloModal] = useState("");
+  const [textoBuscar, setTextoBuscar] = useState("");
+
   return (
     <Fragment>
       <div className="col-xl-10 col-md-10">
@@ -21,23 +23,22 @@ function Cuerpo() {
                   className="btn btn-success mb-3"
                   data-bs-toggle="modal"
                   data-bs-target="#modalProducto"
+                  onClick={e => setTituloModal("Registrar producto")}
                 >
                   Crear Producto
                 </button>
               </div>
-              <div class="col-auto offset-md-5 offset-lg-5">
-                <input type="text" class="form-control" id="campoBuscar" placeholder="ID o descripción" />
-              </div>
-              <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+              <div class="col-4 offset-md-5 offset-lg-5">
+                <input type="text" class="form-control" id="campoBuscar" placeholder="Buscar por ID o descripción"
+                  onChange={e => setTextoBuscar(e.target.value)}
+                  value={textoBuscar}
+                />
               </div>
             </div>
             <table className="table table-striped">
               <HeaderTablaProducto></HeaderTablaProducto>
               <tbody>
-                <FilaTabla></FilaTabla>
-                <FilaTabla></FilaTabla>
-                <FilaTabla></FilaTabla>
+                <FilaTabla textoBuscar={textoBuscar} setTextoBuscar={setTextoBuscar}></FilaTabla>
               </tbody>
             </table>
           </div>
@@ -54,9 +55,7 @@ function Cuerpo() {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <ModalHeader></ModalHeader>
-            <ModalBody></ModalBody>
-            <ModalFooter></ModalFooter>
+            <ModalProducto tituloModal={tituloModal} setTituloModal={setTituloModal}></ModalProducto>
           </div>
         </div>
       </div>
