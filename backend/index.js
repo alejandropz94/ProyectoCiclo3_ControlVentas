@@ -1,20 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const path = require('path');
 
 const app = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello World');
-})
- 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({extended: true}));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(cors());
 app.use('/api', require('./routes/App'));
 
 app.set('port', process.env.PORT || 4000);

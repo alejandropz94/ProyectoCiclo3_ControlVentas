@@ -11,34 +11,29 @@ let getProductos = async function(req, res) {
                 status: 400,
                 mensaje: "Error al obtener productos",
                 err: err
-            })
+            });
         }
             res.json({
                 status: 200,
                 total: total,
-                model: model
+                productos: model
             });
     });
 }
 
 let addProducto = async function(req, res) {
-    const {descripcion, valor_unitario, disponible} = req.body;
+    const {descripcion, precio, disponible} = req.body;
     const producto = await new Producto({
         descripcion,
-        valor_unitario,
+        valor_unitario: precio,
         disponible
     });
-
-    producto.save((err, data) => {
-        if(err) {
-            return res.json({
-                status: 200,
-                mensaje: "Error al ingresar producto",
-                err: err
-            });
-        }
-    });
-    res.send("ok")
+    try{
+        producto.save();
+        res.status(200).send({ok: true, mensaje: "Producto registrado correctamente"});
+    }catch(error) {
+        res.status(500).send({ok: false, mensaje: "Error al registrar producto", error: error});
+    }
 }
 
 let editProducto = async function (req, res) {
