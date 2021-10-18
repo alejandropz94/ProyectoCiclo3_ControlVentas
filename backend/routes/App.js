@@ -22,13 +22,12 @@ app.put("/editVenta", ventas.editVenta);
 
 app.delete("/deleteVenta", ventas.deleteVenta);
 
-
-
-
-
 app.get("/getUsuarios", usuario.getUsuarios);
-app.post("/addProducto", usuario.addUsuario);
 
-app.put("/editProducto", usuario.editUsuario);
+app.post("/addUsuario", usuario.addUsuario);
+
+app.put("/editUsuario", usuario.editUsuario);
+
+app.delete("/deleteUsuario" , usuario.deleteUsuario);
 
 module.exports = app;
