@@ -34,17 +34,12 @@ let addVenta = async function(req, res) {
         estado, 
         valor_total
     });
-
-    venta.save((err, data) => {
-        if(err) {
-            return res.json({
-                status: 200,
-                mensaje: "Error al ingresar una venta",
-                err: err
-            });
-        }
-    });
-    res.send("ok")
+    try{
+        venta.save();
+        res.status(200).send({ok: true, mensaje: "Venta registrado correctamente"});
+    }catch(error) {
+        res.status(500).send({ok: false, mensaje: "Error al registrar producto", error: error});
+    }
 }
 
 let editVenta = async function (req, res) {
