@@ -1,7 +1,7 @@
 const express = require('express');
 
 const pool = require('../settings/db');
-const Usuario = require('../models/Producto');
+const Usuario = require('../models/Usuario');
 
 let getUsuarios = async function(req, res) {
     const model = await Usuario.find();
@@ -28,17 +28,12 @@ let addUsuario = async function(req, res) {
         nombre,
         rol
     });
-
-    usuario.save((err, data) => {
-        if(err) {
-            return res.json({
-                status: 200,
-                mensaje: "Error al visualizar usuario",
-                err: err
-            });
-        }
-    });
-    res.send("ok")
+    try{
+        usuario.save();
+        res.status(200).send({ok: true, mensaje: "Usuario registrado correctamente"});
+    }catch(error) {
+        res.status(500).send({ok: false, mensaje: "Error al registrar usuario", error: error});
+    }
 }
 
 let editUsuario = async function (req, res) {
