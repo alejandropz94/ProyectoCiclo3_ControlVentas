@@ -1,6 +1,9 @@
 const express = require('express');
+
+
 const productos = require('../controller/Productos');
-const usuario = require ('../controller/Usuarios')
+
+const usuarios = require('../controller/Usuarios');
 
 const ventas = require('../controller/Ventas');
 
@@ -22,12 +25,12 @@ app.put("/editVenta", ventas.editVenta);
 
 app.delete("/deleteVenta", ventas.deleteVenta);
 
-app.get("/getUsuarios", usuario.getUsuarios);
+app.get("/getUsuarios" , usuarios.getUsuarios);
 
-app.post("/addUsuario", usuario.addUsuario);
+app.post("/addUsuario" , usuarios.addUsuario);
 
-app.put("/editUsuario", usuario.editUsuario);
+app.put("/editUsuario" , usuarios.editUsuario);
 
-app.delete("/deleteUsuario" , usuario.deleteUsuario);
+app.delete("/deleteUsuario" , usuarios.deleteUsuario);
 
 module.exports = app;

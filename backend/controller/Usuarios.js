@@ -22,11 +22,12 @@ let getUsuarios = async function(req, res) {
 }
 
 let addUsuario = async function(req, res) {
-    const {documento, nombre, rol} = req.body;
+    const {documento, nombre, rol, estado} = req.body;
     const usuario = await new Usuario({
         documento,
         nombre,
-        rol
+        rol,
+        estado
     });
     try{
         usuario.save();
@@ -37,18 +38,18 @@ let addUsuario = async function(req, res) {
 }
 
 let editUsuario = async function (req, res) {
-    const { estado, rol} = req.body;
+    const {_id, estado, rol} = req.body;
     const editUsuario= {
         estado, rol
     }
-    const usuario = await Usuario.updateOne({_id: _id}, editUsuario);
-    res.send("ok")
+    const usuario = await Usuario.updateOne({_id : id}, editUsuario);
+    res.send("Usuario editado con éxito")
 }
 
 let deleteUsuario = async function (req, res) {
     let id = req.body;
-    await Usuario.findOneAndDelete({documento: documento});
-    res.send("ok")
+    await Usuario.findOneAndDelete({_id : id});
+    res.send("Usuario eliminado con éxito")
 }
 
 module.exports = {
