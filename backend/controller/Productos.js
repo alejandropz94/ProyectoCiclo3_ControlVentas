@@ -21,6 +21,24 @@ let getProductos = async function(req, res) {
     });
 }
 
+let getProductoById = async function(req, res) {
+    const model = await Producto.findById(req.params.id);
+    Producto.countDocuments({}, (err, total) => {
+        if(err) {
+            return res.json({
+                status: 400,
+                mensaje: "Error al obtener producto por id",
+                err: err
+            });
+        }
+            res.json({
+                status: 200,
+                total: total,
+                productos: model
+            });
+    });
+}
+
 let addProducto = async function(req, res) {
     const {descripcion, precio, disponible} = req.body;
     const producto = await new Producto({
@@ -46,14 +64,20 @@ let editProducto = async function (req, res) {
 }
 
 let deleteProducto = async function (req, res) {
-    let id = req.body;
-    await Producto.findOneAndDelete({_id: id});
-    res.send("ok")
+    try{
+        let id = req.body;
+        await Producto.findOneAndDelete({_id: id});
+        res.status(200).send({ok: true, mensaje: "Producto eliminado correctamente"});
+    }catch(error) {
+        console.log(error);
+        res.status(500).send({ok: false, mensaje: "Error al eliminar producto", error: error});
+    }
 }
 
 module.exports = {
     getProductos,
     addProducto,
     editProducto,
-    deleteProducto
+    deleteProducto,
+    getProductoById
 }

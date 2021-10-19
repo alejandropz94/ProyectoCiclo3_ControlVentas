@@ -11,6 +11,8 @@ const app = express.Router();
 
 app.get("/getProductos", productos.getProductos);
 
+app.get("/getProductoById/:id", productos.getProductoById);
+
 app.post("/addProducto", productos.addProducto);
 
 app.put("/editProducto", productos.editProducto);
