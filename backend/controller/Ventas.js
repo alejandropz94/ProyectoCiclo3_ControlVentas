@@ -43,7 +43,7 @@ let addVenta = async function(req, res) {
 }
 
 let editVenta = async function (req, res) {
-    const {codigo_venta, id_producto, medio_pago, fecha_venta, cliente, ide_cliente, vendedor, estado, valor_total} = req.body;
+    const {_id, codigo_venta, id_producto, medio_pago, fecha_venta, cliente, ide_cliente, vendedor, estado, valor_total} = req.body;
     const editVenta = {
         codigo_venta,
         id_producto,
