@@ -38,11 +38,14 @@ let addUsuario = async function(req, res) {
 }
 
 let editUsuario = async function (req, res) {
-    const {_id, estado, rol} = req.body;
+    const { _id, documento, nombre, rol, estado} = req.body;
     const editUsuario= {
-        estado, rol
+        documento,
+        nombre, 
+        rol, 
+        estado,
     }
-    const usuario = await Usuario.updateOne({_id : id}, editUsuario);
+    const usuario = await Usuario.updateOne({_id : _id}, editUsuario);
     res.send("Usuario editado con éxito")
 }
 
@@ -56,5 +59,5 @@ module.exports = {
     getUsuarios,
     addUsuario,
     editUsuario,
-    deleteUsuario
+    deleteUsuario,
 }
