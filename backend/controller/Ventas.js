@@ -1,7 +1,7 @@
 const express = require('express');
 
 //const pool = require('../settings/mongodb+srv://ventas:Colombia2021*-@cluster0.nfjsb.mongodb.net/ventas');
-const Venta = require('../models/ventas');
+const Venta = require('../models/Usuario');
 
 let getVentas = async function(req, res) {
     const model = await Venta.find();

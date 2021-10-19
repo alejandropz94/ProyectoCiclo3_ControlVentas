@@ -38,9 +38,9 @@ let addUsuario = async function(req, res) {
 }
 
 let editUsuario = async function (req, res) {
-    const {_id, estado, rol} = req.body;
+    const {documento, nombre, rol, estado} = req.body;
     const editUsuario= {
-        estado, rol
+         documento, nombre, rol, estado
     }
     const usuario = await Usuario.updateOne({_id : id}, editUsuario);
     res.send("Usuario editado con éxito")

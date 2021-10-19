@@ -9,4 +9,4 @@ const Usuario = new Schema({
   estado: {type: String, require: true}
 });
 
-module.exports = model('Usuarios', Usuario);
+module.exports = model('Usuario', Usuario);
