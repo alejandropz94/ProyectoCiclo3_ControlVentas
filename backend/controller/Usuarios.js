@@ -38,18 +38,12 @@ let addUsuario = async function(req, res) {
 }
 
 let editUsuario = async function (req, res) {
-<<<<<<< HEAD
-    const {documento, nombre, rol, estado} = req.body;
+    const {_id, documento, nombre, rol, estado} = req.body;
     const editUsuario= {
-         documento, nombre, rol, estado
-=======
-    const { _id, documento, nombre, rol, estado} = req.body;
-    const editUsuario= {
-        documento,
-        nombre, 
-        rol, 
-        estado,
->>>>>>> 3c4e3400fbbd9bb0dd1c1baf3b986e480a291c8b
+         documento, 
+         nombre, 
+         rol, 
+         estado,
     }
     const usuario = await Usuario.updateOne({_id : _id}, editUsuario);
     res.send("Usuario editado con éxito")
