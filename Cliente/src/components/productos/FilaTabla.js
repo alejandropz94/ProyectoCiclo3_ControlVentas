@@ -4,7 +4,14 @@ import EditarProducto from './EditarProducto';
 import { getProductosSE } from '../../services/Productos.service';
 
 function CuerpoTablaUsuario(props) {
-    const { textoBuscar, setTextoBuscar } = props;
+    const { textoBuscar, setTextoBuscar, sendData2, sendDataEditar2 } = props;
+
+    function getData(val){
+        sendData2(val);
+    }        
+    function getDataEditar(val) {
+        sendDataEditar2(val);
+    }
     useEffect(() => {
         getProductos();
     }, []);
@@ -35,8 +42,8 @@ function CuerpoTablaUsuario(props) {
                 <td>{producto.disponible ? "Sí" : "No"}</td>
                 <td>
                     <div className="btn-group btn-group-sm">
-                        <EditarProducto></EditarProducto>
-                        <EliminarProducto id={producto._id}></EliminarProducto>
+                        <EditarProducto id={producto._id} sendDataEditar={getDataEditar}></EditarProducto>
+                        <EliminarProducto id={producto._id} sendData={getData}></EliminarProducto>
                     </div>
 
                 </td>

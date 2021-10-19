@@ -28,10 +28,21 @@ export const deleteProductoSE = async function (id) {
     try {
         return await axios({
             method: 'DELETE',
-            url: 'https://localhost:4000/api/deleteProducto',
+            url: 'http://localhost:4000/api/deleteProducto',
             data: id
         });
     } catch(error) {
         console.log(error);
+    }
+}
+
+export const getProductoByIdSE = async function (id) {
+    try {
+        return await axios({
+            method: 'GET',
+            url: 'http://localhost:4000/api/getProductoById/'+id+''
+        });
+    } catch (error) {
+        throw new Error(error);
     }
 }

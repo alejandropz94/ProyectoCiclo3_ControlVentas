@@ -10,7 +10,18 @@ function Cuerpo() {
 
   const [tituloModal, setTituloModal] = useState("");
   const [textoBuscar, setTextoBuscar] = useState("");
+  const [idProductoEliminar, setIdProductoEliminar] = useState("");
+  const [statusEliminar, setStatusEliminar] = useState("");
+  const [idProductoEditar, setIdProductoEditar] = useState("");
 
+  function getData2(val){
+    setIdProductoEliminar(val);
+  }  
+
+  function getDataEditar2(val) {
+    setIdProductoEditar(val);
+  }
+  
   return (
     <Fragment>
       <div className="col-xl-10 col-md-10">
@@ -38,7 +49,8 @@ function Cuerpo() {
             <table className="table table-striped">
               <HeaderTablaProducto></HeaderTablaProducto>
               <tbody>
-                <FilaTabla textoBuscar={textoBuscar} setTextoBuscar={setTextoBuscar}></FilaTabla>
+                <FilaTabla textoBuscar={textoBuscar} setTextoBuscar={setTextoBuscar} 
+                sendData2={getData2} sendDataEditar2={getDataEditar2}></FilaTabla>
               </tbody>
             </table>
           </div>
@@ -55,7 +67,8 @@ function Cuerpo() {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <ModalProducto tituloModal={tituloModal} setTituloModal={setTituloModal}></ModalProducto>
+            <ModalProducto tituloModal={tituloModal} setTituloModal={setTituloModal} 
+            idProductoEditar={idProductoEditar} setIdProductoEditar={setIdProductoEditar}></ModalProducto>
           </div>
         </div>
       </div>
@@ -69,7 +82,7 @@ function Cuerpo() {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <ModalEliminarProducto></ModalEliminarProducto>
+            <ModalEliminarProducto idProductoEliminar={idProductoEliminar} setIdProductoEliminar={setIdProductoEliminar}></ModalEliminarProducto>
           </div>
         </div>
       </div>
