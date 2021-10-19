@@ -10,9 +10,10 @@ const Venta = new Schema({
   cliente: { type: String, require: true},
   ide_cliente: { type: Number, require: true},
   vendedor: { type: String, require: true},
-  estado: {type: String, require: true}
+  estado: {type: String, require: true},
+  valor_total: {type: Number, require: true}
   
 });
 
-module.exports = model('Ventas', Venta);
+module.exports = model('Venta', Venta);
 
