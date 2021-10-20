@@ -26,9 +26,7 @@ function Cuerpo () {
                   <table className="table table-striped">
                     <EncabezadoTablaUsuario></EncabezadoTablaUsuario>
                     <tbody>
-                      <CuerpoTablaUsuario></CuerpoTablaUsuario>
-                      <CuerpoTablaUsuario></CuerpoTablaUsuario>
-                      <CuerpoTablaUsuario></CuerpoTablaUsuario>
+                      <CuerpoTablaUsuario></CuerpoTablaUsuario>                      
                     </tbody>
                   </table>
                 </div>

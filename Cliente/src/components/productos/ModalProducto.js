@@ -17,6 +17,7 @@ function ModalProducto(props) {
         isDisabled = true;
     } else {
         isDisabled = false;
+        
     }
     //console.log(tituloModal, idProductoEditar);
     const getProductos = async function () {

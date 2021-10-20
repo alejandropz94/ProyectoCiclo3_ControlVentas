@@ -1,5 +1,34 @@
 import React from 'react'
 
+/*import React, { useEffect, useState } from 'react';
+import { addVentaSE } from '../../services/Ventas.service';
+import { getVentaByIdSE } from '../../services/Ventas.service';
+import notie from 'notie';
+import 'notie/dist/notie.css';
+
+function ModalVenta(props) {
+
+    const { tituloModal, setTituloModal, idVentaEditar, setIdVentaEditar } = props;
+    const [codigo_venta, setCodigo_venta] = useState("");
+    const [id_producto, setId_producto] = useState("");
+    const [fecha_venta, setFecha_venta] = useState("");
+    const [cliente, setCliente] = useState("");
+    const [ide_cliente, setIde_cliente] = useState("");
+    const [vendedor, setVendedor] = useState("");
+    const [estado, seteEstado] = useState("");
+    const [valor_total, setValor_total] = useState("");
+
+
+    let isDisabled = false;
+    let editar = 0;
+    if (codigo_venta === "" || id_producto === "" || fecha_venta === ""
+     || cliente === "" || ide_cliente === "" || vendedor === ""|| estado === ""|| valor_total === "") {
+        isDisabled = true;
+    } else {
+        isDisabled = false;
+    }   
+        */
+
 function ModalVentas() {
     return (
         <div className="modal-body">
