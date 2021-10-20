@@ -19,10 +19,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background: #0250c5;
+    background-image: -webkit-linear-gradient(bottom, #0250c5, #e60e0e);
+    /* background: #0250c5;
     background: -webkit-linear-gradient(bottom, #0250c5, #e60e0e);
     background: -moz-linear-gradient(bottom, #0250c5, #e60e0e);
-    background: linear-gradient(bottom, #0250c5, #e60e0e);
+    background: linear-gradient(bottom, #0250c5, #e60e0e); */
   }
 
 h2#titulo{
