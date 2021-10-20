@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ActualizarVenta from './ActualizarVenta';
 import EliminarVenta from './EliminarVenta';
-import SeleccionEstado from './SeleccionEstado';
-import SeleccionMedioPago from './SeleccionMedioPago';
-import { Link } from 'react-router-dom'
+import {getVentasSE} from '../services/Ventas.service';
 
 function TablaVentas() {
+    useEffect(() => {
+        getVentas();
+    }, []);
+
+    const [ventas, setVentas] = useState([]);
+    const getVentas = async function () {
+        try {
+            const { data } = await getVentasSE();
+            console.log(data.model);
+            setVentas(data.model);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
-        
-        <tr>
-            
+        ventas.map((venta, index) => 
+        <tr key={venta._id}>
+                <td>{venta.codigo_venta}</td>
+                <td >ddddd</td>
                 <td >Dato</td>
-                <td >Dato</td>
-                <td >Dato</td>
-                <td >Dato</td>
+                <td >{venta.fecha_venta}</td>
                 <td >Dato</td>
                 <td >Dato</td>
                 <td >Dato</td>
@@ -27,8 +38,8 @@ function TablaVentas() {
                     
                 </td>
         </tr>
-        
-    );
+        ));
+    
 }
 
 export default TablaVentas
