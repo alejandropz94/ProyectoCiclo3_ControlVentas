@@ -26,8 +26,6 @@ function Ventas () {
                     <EncabezadoTablaVentas></EncabezadoTablaVentas>
                     <tbody>
                       <TablaVentas></TablaVentas>
-                      <TablaVentas></TablaVentas>
-                      <TablaVentas></TablaVentas>
                     </tbody>
                   </table>
                 </div>
