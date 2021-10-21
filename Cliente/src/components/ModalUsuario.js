@@ -101,10 +101,14 @@ function ModalUsuario(props) {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="rol" className="form-label">Rol:</label>
-                            <input type="text" className="form-control" placeholder="Digite el rol"
-                                onChange={e => setRol(e.target.value)}
-                                value={rol}
-                            />
+                            <select class="form-select" onChange={e => setRol(e.target.value)}
+                                value={rol}>
+                                    <option disabled selected>Seleccione</option>
+                                    <option >Administrador</option>
+                                    <option >Vendedor</option>
+                                    
+                            </select>
+                            
                         </div>
                         <div className="mb-3">
                             <label htmlFor="estado" className="form-label">Estado:</label>
