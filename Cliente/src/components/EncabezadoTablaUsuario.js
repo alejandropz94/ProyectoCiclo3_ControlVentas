@@ -5,7 +5,7 @@ function EncabezadoTablaUsuario() {
         
         <thead>
             <tr>
-                <th scope="col"></th>
+                <th scope="col">Identificador Unico de Usuario</th>
                 <th scope="col">N° Cédula</th>
                 <th scope="col">Nombre y Apellido</th>
                 <th scope="col">Rol</th>
