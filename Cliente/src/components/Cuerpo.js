@@ -1,17 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../Style/estilos.css'
 import BotonIngresarUsuario from './BotonIngresarUsuario';
 import CuerpoTablaUsuario from './CuerpoTablaUsuario';
 import EncabezadoTablaUsuario from './EncabezadoTablaUsuario';
-import SeleccionOpcion from './SelecccionOpcion';
-import { Link } from 'react-router-dom'
 import { Fragment } from 'react/cjs/react.production.min';
 import ModalHeader from './ModalHeader';
 import ModalFooter from './ModalFooter';
 import ModalBody from './ModalBody';
+import ModalEliminarUsuario from './ModalEliminarUsuario';
+import ModalUsuario from './ModalUsuario';
 
 
 function Cuerpo () {
+
+  const [tituloModal, setTituloModal] = useState("");
+  const [textoBuscar, setTextoBuscar] = useState("");
+  const [idUsuarioEliminar, setIdUsuarioEliminar] = useState("");
+  const [statusEliminar, setStatusEliminar] = useState("");
+  const [idUsuarioEditar, setIdUsuarioEditar] = useState("");
+
+  function getData2(val){
+    setIdUsuarioEliminar(val);
+  }  
+
+  function getDataEditar2(val) {
+    setIdUsuarioEditar(val);
+  }
+
+
     return (
       <Fragment>
         <div className = "col-xl-10 col-md-10">
@@ -20,13 +36,22 @@ function Cuerpo () {
                 <div className ="col col-lg-10">
                   <div className ="row">
                     <div className ="col-auto">
-                      <BotonIngresarUsuario></BotonIngresarUsuario>
+                    <button
+                      className="btn btn-success mb-3"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalUsuario"
+                      onClick={e => setTituloModal("Crear un usuario nuevo")}
+                    >
+                  Crear Usuario
+                </button>
                     </div>
+                    
                   </div>
                   <table className="table table-striped">
                     <EncabezadoTablaUsuario></EncabezadoTablaUsuario>
                     <tbody>
-                      <CuerpoTablaUsuario></CuerpoTablaUsuario>                      
+                      <CuerpoTablaUsuario textoBuscar={textoBuscar} setTextoBuscar={setTextoBuscar} 
+                      sendData2={getData2} sendDataEditar2={getDataEditar2}></CuerpoTablaUsuario>                      
                     </tbody>
                   </table>
                 </div>
@@ -43,12 +68,25 @@ function Cuerpo () {
               >
           <div className="modal-dialog">
             <div className="modal-content">
-                <ModalHeader></ModalHeader>
-                <ModalBody></ModalBody>
-                <ModalFooter></ModalFooter>
+            <ModalUsuario tituloModal={tituloModal} setTituloModal={setTituloModal} 
+            idUsuarioEditar={idUsuarioEditar} setIdUsuarioEditar={setIdUsuarioEditar}></ModalUsuario>
             </div>
           </div>
         </div>
+        <div className="modal fade"
+        id="modalEliminar"
+        tabindex="-1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <ModalEliminarUsuario idUsuarioEliminar={idUsuarioEliminar} setIdUsuarioEliminar={setIdUsuarioEliminar}></ModalEliminarUsuario>
+          </div>
+        </div>
+      </div>
       </Fragment>
         
     );

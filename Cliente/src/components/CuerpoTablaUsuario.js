@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import BotonDangerUsuario from './BotonDangerUsuario';
 import BotonWarningUsuario from './BotonWarningUsuario';
-import SeleccionOpcion from './SelecccionOpcion';
-import { Link } from 'react-router-dom'
 import {getUsuariosSE} from '../services/Usuarios.service';
 
 
-function CuerpoTablaUsuario() {
+function CuerpoTablaUsuario(props) {
+    const { textoBuscar, setTextoBuscar, sendData2, sendDataEditar2} = props
+
+    function getData(val){
+        sendData2(val);
+    }
+    function getDataEditar(val){
+        sendDataEditar2(val);
+    }
+
     useEffect(() => {
         getUsuarios();
     }, []);
@@ -15,18 +22,25 @@ function CuerpoTablaUsuario() {
     const getUsuarios = async function () {
         try {
             const { data } = await getUsuariosSE();
-            console.log(data.model);
+            
             setUsuarios(data.model);
         } catch (error) {
             console.log(error);
         }
     }
     return (
+        usuarios.filter(function (item) {
+            if (item.documento === undefined) {
+                item.documento = "";
+            }
+            if (textoBuscar === "" || item.documento.includes(textoBuscar) || item._id.includes(textoBuscar)) {
+                return true;
+            }
 
-        usuarios.map((usuario, index) => 
+        }) .map((usuario, index) => (
         <tr key={usuario._id}>        
                     
-                <td ></td>
+                <td > {usuario._id} </td>
                 <td >{usuario.documento}</td>
                 <td >{usuario.nombre}</td>
                 <td >{usuario.rol}</td>
@@ -34,14 +48,14 @@ function CuerpoTablaUsuario() {
                 
                 <td>
                     <div className="btn-group btn-group-sm">
-                        <BotonWarningUsuario></BotonWarningUsuario>
-                        <BotonDangerUsuario></BotonDangerUsuario>
+                        <BotonWarningUsuario id={usuario._id} sendDataEditar={getDataEditar}></BotonWarningUsuario>
+                        <BotonDangerUsuario id={usuario._id} sendData={getData}></BotonDangerUsuario>
                     </div>
                     
                 </td>
         </tr>
-        
-    ));
+        ))
+    );
 }
 
 export default CuerpoTablaUsuario
