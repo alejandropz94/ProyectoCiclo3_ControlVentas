@@ -50,14 +50,22 @@ let editUsuario = async function (req, res) {
 }
 
 let deleteUsuario = async function (req, res) {
-    let id = req.body;
-    await Usuario.findOneAndDelete({_id : id});
-    res.send("Usuario eliminado con éxito")
+    try{
+        let id = req.body;
+        await Usuario.findOneAndDelete({_id: id});
+        
+        res.status(200).send({ok: true, mensaje: "Usuario eliminado correctamente"});
+        
+        }catch(error) {
+            console.log(error);
+            res.status(500).send({ok: false, mensaje: "Error al eliminar usuario", error: error});
+        }
+    
 }
 
 module.exports = {
     getUsuarios,
     addUsuario,
     editUsuario,
-    deleteUsuario,
+    deleteUsuario
 }
