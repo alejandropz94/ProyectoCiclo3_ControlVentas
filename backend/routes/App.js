@@ -8,6 +8,10 @@ const usuarios = require('../controller/Usuarios');
 const ventas = require('../controller/Ventas');
 
 const app = express.Router();
+const {validarJWT} = require('../middlewares/valid_jwt');
+
+app.use(validarJWT);
+
 
 app.get("/getProductos", productos.getProductos);
 
