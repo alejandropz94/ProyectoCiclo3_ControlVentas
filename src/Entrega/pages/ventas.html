@@ -93,7 +93,7 @@
                     <br>
                     <br>
                     <div class="row justify-content-md-center">
-                        <div class="col col-lg-10">
+                        <div class="col col-lg-12">
                             <div class="row">
                                 <div class="col-auto">
                                     <button class="btn btn-success mb-3" data-bs-toggle="modal"
@@ -101,19 +101,8 @@
                                         onclick="document.getElementById('tituloModal').innerHTML = 'Ingresa una venta'"
                                         >Ingresar</button>
                                 </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-primary mb-3" data-bs-toggle="modal"
-                                        data-bs-target="#modalProducto2" 
-                                        onclick="document.getElementById('tituloModal').innerHTML = 'Actualizar venta'"
-                                        >Actualizar</button>
-                                </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-danger mb-3" data-bs-toggle="modal"
-                                        data-bs-target="#modalProducto3" 
-                                        onclick="document.getElementById('tituloModal').innerHTML = 'Eliminar venta'"
-                                        >Eliminar</button>
-                                </div>
-                                <div class="col-auto offset-md-4 offset-lg-3">
+                                
+                                <div class="col-auto offset-md-4 offset-lg-7">
                                     <input type="text" class="form-control" id="campoBuscar" placeholder="Buscar...">
                                 </div>
                                 <div class="col-auto">
@@ -123,22 +112,28 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col">X</th>
-                                        <th scope="col">Numero de venta</th>
+                                        <!-- <th scope="col">X</th> -->
+                                        <th scope="col">Codigo Venta</th>
+                                        <th scope="col">ID Producto</th>
+                                        <th scope="col">Medio de Pago</th>
+                                        <th scope="col">Fecha de Venta</th>
+                                        <th scope="col">Cliente</th>
                                         <th scope="col">ID Cliente</th>
-                                        <th scope="col">Nombre Cliente</th>
-                                        <th scope="col">Fecha pago</th>
+                                        <th scope="col">Vendedor</th>
                                         <th scope="col">Estado</th>
-                                        <th scope="col">Responsable</th>
+                                        <th scope="col">Valor Total</th>
+                                        <th scope="colgroup">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row"><input type="checkbox"></th>
+                                        <!-- <th scope="row"><input type="checkbox"></th> -->
+                                        
                                         <td>0001</td>
-                                        <td>123456789</td>
-                                        <td>Juanito</td>
+                                        <td>0010</td>
+                                        <td>Tarjeta de credito</td>
                                         <td>10-Junio-2021</td>
+<<<<<<< HEAD
                                         <td>
                                             <select class="form-select">
                                               <option disabled selected>Seleccione</option>
@@ -196,7 +191,23 @@
                                             </select>
                                           </td>
                                         <td>Andrea</td>
+=======
+                                        <td>Juanito</td>
+                                        <td>123456789</td>
+                                        <td>Andrea</td>
+                                        <td>Cancelado</td>
+                                        <td>25000</td>
+                                        <td>
+                                            <div class="btngroup btn-group-sm">
+                                                <button class="btn btn-warning" data-bs-toggle="modal"
+                                                data-bs-target="#modalProducto2"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#modalProducto3"><i class="fa fa-times"></i></button>
+                                              </div>
+                                        </td>
+>>>>>>> Development
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -224,7 +235,11 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                    <input type="text" class="form-control" placeholder="ingresa codigo">
                </div>
                <div class="col">
+<<<<<<< HEAD
                    <label for="precio" class="form-label">IDE Producto:</label>
+=======
+                   <label for="precio" class="form-label">ID Producto:</label>
+>>>>>>> Development
                    <input type="number" class="form-control" placeholder="ingresa el Valor">
                    
                </div>
@@ -258,7 +273,11 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                 </div>
                 
                 <div class="col">
+<<<<<<< HEAD
                     <label for="precio" class="form-label">IDE Cliente:</label>
+=======
+                    <label for="precio" class="form-label">ID Cliente:</label>
+>>>>>>> Development
                     <input type="text" class="form-control">                                          
                 </div>
              
@@ -273,7 +292,11 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <label for="precio" class="form-label">Estado:</label>
                 <select class="form-select">
                  <option disabled selected>Seleccione</option>
+<<<<<<< HEAD
                  <option value="0">Porceso</option>
+=======
+                 <option value="0">Procesado</option>
+>>>>>>> Development
                  <option value=" 1">Cancelado</option>
                  <option value="0">Entregado</option>
              </select> 
@@ -321,7 +344,11 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                    <input type="text" class="form-control" placeholder="ingresa codigo">
                </div>
                <div class="col">
+<<<<<<< HEAD
                    <label for="precio" class="form-label">IDE Producto:</label>
+=======
+                   <label for="precio" class="form-label">ID Producto:</label>
+>>>>>>> Development
                    <input type="number" class="form-control" placeholder="ingresa el Valor">
                    
                </div>
@@ -355,7 +382,11 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                 </div>
                 
                 <div class="col">
+<<<<<<< HEAD
                     <label for="precio" class="form-label">IDE Cliente:</label>
+=======
+                    <label for="precio" class="form-label">ID Cliente:</label>
+>>>>>>> Development
                     <input type="text" class="form-control">                                          
                 </div>
              
@@ -370,7 +401,11 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <label for="precio" class="form-label">Estado:</label>
                 <select class="form-select">
                  <option disabled selected>Seleccione</option>
+<<<<<<< HEAD
                  <option value="0">Porceso</option>
+=======
+                 <option value="0">Procesado</option>
+>>>>>>> Development
                  <option value=" 1">Cancelado</option>
                  <option value="0">Entregado</option>
              </select> 
