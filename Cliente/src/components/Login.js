@@ -16,8 +16,12 @@ const Login = () => {
                 'Authorization': `Bearer ${resp.tokenId}`
             }
         });
-
         console.log(response.data);
+        sessionStorage.setItem("token", response.data.Token);
+        sessionStorage.setItem("nombre", response.data.nombre);
+        window.location.href="/productos";
+        
+
     }
 
     return (

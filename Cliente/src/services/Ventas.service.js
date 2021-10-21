@@ -4,7 +4,8 @@ export const getVentasSE = async function () {
     try {
         return await axios({
             method: 'GET',
-            url: 'http://localhost:4000/api/getVentas'
+            url: 'http://localhost:4000/api/getVentas',
+            headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch (error) {
         throw new Error(error);
@@ -17,7 +18,7 @@ export const addVentaSE = async function(venta) {
             method: 'POST',
             url: 'http://localhost:4000/api/addVenta',
             data: venta,
-            headers: {'Access-Control-Allow-Origin' : '*'}
+            headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch(error) {
         console.log(error);
@@ -29,7 +30,8 @@ export const deleteVentaSE = async function (id) {
         return await axios({
             method: 'DELETE',
             url: 'https://localhost:4000/api/deleteVenta',
-            data: id
+            data: id,
+            headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch(error) {
         console.log(error);

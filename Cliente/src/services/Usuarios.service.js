@@ -4,7 +4,8 @@ export const getUsuariosSE = async function () {
     try {
         return await axios({
             method: 'GET',
-            url: 'http://localhost:4000/api/getUsuarios'
+            url: 'http://localhost:4000/api/getUsuarios',
+            headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch (error) {
         throw new Error(error);
@@ -17,7 +18,7 @@ export const addUsuarioSE = async function(usuario) {
             method: 'POST',
             url: 'http://localhost:4000/api/addUsuario',
             data: usuario,
-            headers: {'Access-Control-Allow-Origin' : '*'}
+            headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch(error) {
         console.log(error);
@@ -29,7 +30,8 @@ export const deleteUsuarioSE = async function (id) {
         return await axios({
             method: 'DELETE',
             url: 'http://localhost:4000/api/deleteUsuario',
-            data: id
+            data: id,
+            headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch(error) {
         console.log(error);
@@ -40,7 +42,8 @@ export const getUsuarioByIdSE = async function (id) {
     try {
         return await axios({
             method: 'GET',
-            url: 'http://localhost:4000/api/getUsuarioById/'+id+''
+            url: 'http://localhost:4000/api/getUsuarioById/'+id+'',
+            headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch (error) {
         throw new Error(error);

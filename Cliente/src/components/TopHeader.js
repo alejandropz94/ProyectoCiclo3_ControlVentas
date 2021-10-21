@@ -110,7 +110,7 @@ function TopHeader() {
                 height="32"
                 className="rounded-circle me-2"
               ></img>
-              <strong>Nombre Usuario</strong>
+              <strong>{sessionStorage.getItem("nombre")}</strong>
             </a>
             <ul
               className="dropdown-menu dropdown-menu-dark text-small shadow"
