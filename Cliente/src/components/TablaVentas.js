@@ -21,7 +21,7 @@ function TablaVentas() {
     return (
         ventas.map((venta, index) => 
         <tr key={venta._id}>
-                <td>{venta.codigo_venta}</td>
+                <td>{venta._id}</td>
                 <td >{venta.id_producto}</td>
                 <td >{venta.medio_pago}</td>
                 <td >{venta.fecha_venta}</td>

@@ -43,8 +43,7 @@ function Ventas () {
           <div className="modal-dialog">
             <div className="modal-content">
                 <ModalTitle></ModalTitle>
-                <ModalVentas></ModalVentas>
-                <ModalFooter></ModalFooter>
+                <ModalVentas></ModalVentas>                
             </div>
           </div>
         </div>

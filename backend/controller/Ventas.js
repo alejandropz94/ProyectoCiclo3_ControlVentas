@@ -1,7 +1,7 @@
 const express = require('express');
 
 //const pool = require('../settings/mongodb+srv://ventas:Colombia2021*-@cluster0.nfjsb.mongodb.net/ventas');
-const Venta = require('../models/Usuario');
+const Venta = require('../models/ventas');
 
 let getVentas = async function(req, res) {
     const model = await Venta.find();
@@ -60,9 +60,14 @@ let editVenta = async function (req, res) {
 }
 
 let deleteVenta = async function (req, res) {
-    let id = req.body;
-    await Venta.findOneAndDelete({_id: id});
-    res.send("ok")
+    try{
+        let id = req.body;
+        await Venta.findOneAndDelete({_id: id});
+        res.status(200).send({ok: true, mensaje: "Producto eliminado correctamente"});
+    }catch(error) {
+        console.log(error);
+        res.status(500).send({ok: false, mensaje: "Error al eliminar producto", error: error});
+    }
 }
 
 module.exports = {

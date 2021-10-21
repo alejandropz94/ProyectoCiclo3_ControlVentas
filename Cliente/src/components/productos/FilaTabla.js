@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import EliminarProducto from './EliminarProducto';
 import EditarProducto from './EditarProducto';
 import { getProductosSE } from '../../services/Productos.service';
-
 function CuerpoTablaUsuario(props) {
     const { textoBuscar, setTextoBuscar, sendData2, sendDataEditar2 } = props;
 
