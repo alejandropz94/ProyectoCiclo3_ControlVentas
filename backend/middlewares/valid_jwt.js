@@ -10,7 +10,7 @@ const validarJWT = (req, res = response, next) => {
     // let token = '';
     // token = req.headers['x-access-token'] || req.headers['authorization'];
 
-     console.log(token);
+     //console.log(token);
 
     if(!token) {
         return res.status(401).json({
@@ -27,7 +27,6 @@ const validarJWT = (req, res = response, next) => {
     // console.log(token);
 
     try {
-        console.log(process.env.Ventas_JWT);
         const { uid, name } = jwt.verify(
             token,
             process.env.Ventas_JWT

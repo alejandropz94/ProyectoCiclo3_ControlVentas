@@ -4,7 +4,7 @@ const express = require('express');
 const Venta = require('../models/ventas');
 
 let getVentas = async function(req, res) {
-    const model = await Venta.find();
+    const model = await Venta.find().populate("id_producto");
     Venta.countDocuments({}, (err, total) => {
         if(err) {
             return res.json({

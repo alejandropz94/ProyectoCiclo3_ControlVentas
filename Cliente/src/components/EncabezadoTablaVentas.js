@@ -6,7 +6,7 @@ function EncabezadoTablaVentas() {
         <thead>
             <tr>
                 <th scope="col">Codigo Venta</th>
-                <th scope="col">ID Producto</th>
+                <th scope="col">Producto</th>
                 <th scope="col" id="estado">Medio de Pago</th>
                 <th scope="col">Fecha de Venta</th>
                 <th scope="col">Cliente</th>

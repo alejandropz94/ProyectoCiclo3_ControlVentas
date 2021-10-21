@@ -49,8 +49,7 @@ function ModalVenta(props) {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        const venta = {
-            
+        const venta = {            
             id_producto,
             medio_pago,
             fecha_venta,
@@ -64,7 +63,7 @@ function ModalVenta(props) {
             try {
                 addVentaSE(venta).then(response => {
                     if (response.data.ok) {
-                        //document.querySelector('.closeModalVenta').click();
+                        document.querySelector('.closeModalVenta').click();
                         notie.alert({
                             type: 'success',
                             text: response.data.mensaje,
@@ -94,19 +93,9 @@ function ModalVenta(props) {
                         <option selected>Seleccione</option>
                         {
                             productos.map((producto,index )=> (
-                                <option value="producto._id">{producto.descripcion}</option>
-                                                       
-                            
-                                                       
-
+                                <option value={producto._id}>{producto.descripcion}</option>
                             ))
-
-
-
-                        }
-
-
-                        
+                        }                        
                     </select>
                 </div>
                 <div className="row mt-2">
@@ -156,9 +145,9 @@ function ModalVenta(props) {
                                 value={estado} aria-label="Default select example" id="estado">
                         
                         <option selected>Seleccione</option>
-                        <option value="efectivo">Procesado</option>
-                        <option value="tarjeta">Cancelado</option>
-                        <option value="tarjeta">Entregado</option>
+                        <option value="procesado">Procesado</option>
+                        <option value="cancelado">Cancelado</option>
+                        <option value="entregado">Entregado</option>
                     </select>                         
                 </div>
                 <div className="row mt-2">
