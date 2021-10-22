@@ -35,7 +35,7 @@ app.get("/getUsuarios" , usuarios.getUsuarios);
 
 //Get usuario by id
 
-app.get("/getUsuarioById", usuarios.getUsuarioById);
+app.get("/getUsuarioById/:id", usuarios.getUsuarioById);
 
 // app.post("/addUsuario" , usuarios.addUsuario);
 

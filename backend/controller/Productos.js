@@ -59,7 +59,7 @@ let editProducto = async function (req, res) {
     const editProducto = {
         descripcion, valor_unitario, disponible
     }
-    const producto = await Producto.updateOne({_id: id}, editProducto);
+    const producto = await Producto.updateOne({_id: _id}, editProducto);
     res.send("ok")
 }
 

@@ -49,3 +49,16 @@ export const getUsuarioByIdSE = async function (id) {
         throw new Error(error);
     }
 }
+
+export const updateUsuarioSE = async function (usuario) {
+    try {
+        return await axios({
+            method: 'PUT',
+            url: 'http://localhost:4000/api/editUsuario',
+            data: usuario,
+            headers: { "x-token" : sessionStorage.getItem("token")}
+        });
+    } catch (error) {
+        throw new Error(error);
+    }
+}

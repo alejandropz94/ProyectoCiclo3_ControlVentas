@@ -1,61 +1,57 @@
 import React, { useEffect, useState } from 'react';
-import { addUsuarioSE } from '../services/Usuarios.service';
-import { getUsuarioByIdSE } from '../services/Usuarios.service';
+import { getUsuarioByIdSE, updateUsuarioSE } from '../services/Usuarios.service';
 import notie from 'notie';
 import 'notie/dist/notie.css';
 
 function ModalUsuario(props) {
 
     const { tituloModal, setTituloModal, idUsuarioEditar, setIdUsuarioEditar } = props;
-    const [documento, setDocumento] = useState("");
+    const [email, setEmail] = useState("");
     const [nombre, setNombre] = useState("");
     const [rol, setRol] = useState("");
     const [estado, setEstado] = useState("");
+    const [_id, setId] = useState("");
 
     let isDisabled = false;
-    let editar = 0;
     
-    //console.log(tituloModal, idProductoEditar);
+    useEffect(() => {
+        getUsuarios();
+    }, [idUsuarioEditar]);
+
     const getUsuarios = async function () {
         if (idUsuarioEditar != null && idUsuarioEditar != "") {
-            editar = 1;
             try {
                 const { data } = await getUsuarioByIdSE(idUsuarioEditar);
-                setDocumento(data.usuarios.documento);
-                setNombre(data.usuarios.nombre);
-                setRol (data.usuarios.rol);
-                setEstado (data.usuarios.estado);
-                
+                setEmail(data.email);
+                setNombre(data.nombre);
+                setRol(data.rol);
+                setEstado(data.estado);
+                setId(data._id);
             } catch (error) {
                 console.log(error);
             }
-        } else {
-            editar = 0;
         }
     }
-    //getProductos();
 
     const handleSubmit = e => {
         e.preventDefault();
         const usuario = {
-            documento,
+            _id,
+            email,
             nombre,
             rol,
             estado
         };
-        if (editar != 1) {
-            console.log("nuevo");
+        console.log(usuario);
+        
             try {
-                addUsuarioSE(usuario).then(response => {
+                updateUsuarioSE(usuario).then(response => {
                     if (response.data.ok) {
                         document.querySelector('.closeModalUsuario').click();
                         notie.alert({
                             type: 'success',
                             text: response.data.mensaje,
-                        });
-                        setDocumento("");
-                        setNombre("");
-                        
+                        });                        
                     } else {
                         notie.alert({
                             type: 'error',
@@ -66,15 +62,12 @@ function ModalUsuario(props) {
             } catch (error) {
                 console.log(error);
             }
-        } else {
-            console.log("editar");
-
-        }
+            
     }
     return (
         <div className="principalBody">
             <div className="modal-header">
-                <h5 className="modal-title" id="tituloModal">{tituloModal === "" ? "Crear nuevo usuario" : tituloModal}</h5>
+                <h5 className="modal-title" id="tituloModal">Actualizar usuario</h5>
                 <button
                     type="button"
                     className="btn-close closeModalUsuario"
@@ -86,15 +79,14 @@ function ModalUsuario(props) {
                 <div className="modal-body">
                     <div className="row">
                         <div className="mb-3">
-                            <label htmlFor="documento" className="form-label">Documento</label>
-                            <input type="number" className="form-control" id="documento"
-                                placeholder="Digite el número de documento"
-                                onChange={e => setDocumento(e.target.value)}
-                                value={documento} />
+                            <label htmlFor="email" className="form-label">Email</label>
+                            <input type="text" readOnly className="form-control" id="email"
+                                onChange={e => setEmail(e.target.value)}
+                                value={email} />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="nombre" className="form-label">Nombre y Apellido:</label>
-                            <input type="text" className="form-control" placeholder="Digite su nombre"
+                            <label htmlFor="nombre" className="form-label">Nombres:</label>
+                            <input type="text" readOnly className="form-control" placeholder="Digite su nombre"
                                 onChange={e => setNombre(e.target.value)}
                                 value={nombre}
                             />
@@ -104,8 +96,8 @@ function ModalUsuario(props) {
                             <select class="form-select" onChange={e => setRol(e.target.value)}
                                 value={rol}>
                                     <option disabled selected>Seleccione</option>
-                                    <option >Administrador</option>
-                                    <option >Vendedor</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="vendedor">Vendedor</option>
                                     
                             </select>
                             
@@ -116,9 +108,9 @@ function ModalUsuario(props) {
                             <select class="form-select" onChange={e => setEstado(e.target.value)}
                                 value={estado}>
                                   <option disabled selected>Seleccione</option>
-                                  <option >Autorizado</option>
-                                  <option >Pendiente</option>
-                                  <option >No autorizado</option>
+                                  <option value="autorizado" >Autorizado</option>
+                                  <option value="pendiente">Pendiente</option>
+                                  <option value="no autorizado">No autorizado</option>
                                 </select>
                         </div>
 
@@ -126,7 +118,7 @@ function ModalUsuario(props) {
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <input type="submit" className="btn btn-primary" disabled={isDisabled} value="Crear" />
+                    <input type="submit" className="btn btn-primary" disabled={isDisabled} value="Actualizar" />
                 </div>
             </form>
         </div>

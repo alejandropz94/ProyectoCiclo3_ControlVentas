@@ -41,7 +41,7 @@ function CuerpoTablaUsuario(props) {
         <tr key={usuario._id}>        
                     
                 <td > {usuario._id} </td>
-                <td >{usuario.documento}</td>
+                <td >{usuario.email}</td>
                 <td >{usuario.nombre}</td>
                 <td >{usuario.rol}</td>
                 <td >{usuario.estado}</td>

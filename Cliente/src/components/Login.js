@@ -11,22 +11,23 @@ const Login = () => {
 
         let response = await axios({
             method: 'POST',
-            url :'http://localhost:4000/api/auth/google/login',
-            headers:{
+            url: 'http://localhost:4000/api/auth/google/login',
+            headers: {
                 'Authorization': `Bearer ${resp.tokenId}`
             }
         });
-        console.log(response.data);
-        sessionStorage.setItem("token", response.data.Token);
-        sessionStorage.setItem("nombre", response.data.nombre);
-        window.location.href="/productos";
-        
+        if (response.data.Token) {
+            sessionStorage.setItem("token", response.data.Token);
+            sessionStorage.setItem("nombre", response.data.nombre);
+            window.location.href = "/productos";
+        }
+
 
     }
 
     return (
-        <div className = "contlogin text-center">
-            <div className = "container log pt-5 pb-5">
+        <div className="contlogin text-center">
+            <div className="container log pt-5 pb-5">
                 <form>
                     <img
                         src={Mision}
@@ -45,7 +46,7 @@ const Login = () => {
                             />
                         </div>
                     </div>
-                        <p className="mt-5 mb-3 text-muted">©MinTic 2021</p>
+                    <p className="mt-5 mb-3 text-muted">©MinTic 2021</p>
                 </form>
             </div>
         </div>

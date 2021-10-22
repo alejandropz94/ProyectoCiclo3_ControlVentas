@@ -52,8 +52,13 @@ let editUsuario = async function (req, res) {
          rol, 
          estado,
     }
-    const usuario = await Usuario.updateOne({_id : _id}, editUsuario);
-    res.send("Usuario editado con éxito")
+    try{
+        console.log(_id);
+        const usuario = await Usuario.updateOne({_id : _id}, editUsuario);
+        res.status(200).send({ok: true, mensaje: "Usuario actualizado correctamente"});
+    }catch(error) {
+        res.status(500).send({ok: false, mensaje: "Error al actualizar usuario", error: error});
+    }
 }
 
 let deleteUsuario = async function (req, res) {
