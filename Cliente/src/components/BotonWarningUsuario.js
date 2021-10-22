@@ -4,7 +4,6 @@ function BotonWarningUsuario(props) {
     const {id, sendDataEditar} = props;
     const handleEditar = e => {
         let idUsuarioEditar = e.target.getAttribute("_id");
-        console.log("id editar", idUsuarioEditar);
         sessionStorage.setItem("idUsuarioEditar", idUsuarioEditar);
         sendDataEditar(idUsuarioEditar);
     }

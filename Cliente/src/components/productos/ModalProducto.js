@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addProductoSE } from '../../services/Productos.service';
+import { addProductoSE, updatProductoSE } from '../../services/Productos.service';
 import { getProductoByIdSE } from '../../services/Productos.service';
 import notie from 'notie';
 import 'notie/dist/notie.css';
@@ -10,19 +10,30 @@ function ModalProducto(props) {
     const [descripcion, setDescripcion] = useState("");
     const [precio, setPrecio] = useState("");
     const [disponible, setDisponible] = useState("");
+    const [editar, setEditar] = useState(false);
 
     let isDisabled = false;
-    let editar = 0;
     if (descripcion === "" || precio === "" || disponible === "") {
         isDisabled = true;
     } else {
         isDisabled = false;
         
     }
-    //console.log(tituloModal, idProductoEditar);
+    useEffect(() => {
+        getProductos();
+    }, [idProductoEditar]);
+
+    const handleCerrar = e => {
+        setIdProductoEditar("");
+        setDescripcion("");
+        setPrecio("");
+        setDisponible("");
+    }
+
     const getProductos = async function () {
+        setEditar(true);
         if (idProductoEditar != null && idProductoEditar != "") {
-            editar = 1;
+            setTituloModal("Actualizar producto");
             try {
                 const { data } = await getProductoByIdSE(idProductoEditar);
                 setDescripcion(data.productos.descripcion);
@@ -32,7 +43,7 @@ function ModalProducto(props) {
                 console.log(error);
             }
         } else {
-            editar = 0;
+            setEditar(false);
         }
     }
     //getProductos();
@@ -40,12 +51,12 @@ function ModalProducto(props) {
     const handleSubmit = e => {
         e.preventDefault();
         const producto = {
+            _id: idProductoEditar,
             descripcion,
             precio,
-            disponible: disponible === 1 ? true : false
+            disponible: disponible === "1" ? true : false
         };
-        if (editar != 1) {
-            console.log("nuevo");
+        if (!editar) {
             try {
                 addProductoSE(producto).then(response => {
                     if (response.data.ok) {
@@ -54,9 +65,6 @@ function ModalProducto(props) {
                             type: 'success',
                             text: response.data.mensaje,
                         });
-                        setDescripcion("");
-                        setPrecio("");
-                        setDisponible("");
                     } else {
                         notie.alert({
                             type: 'error',
@@ -67,20 +75,38 @@ function ModalProducto(props) {
             } catch (error) {
                 console.log(error);
             }
+            
         } else {
-            console.log("editar");
-
+            try {
+                updatProductoSE(producto).then(response => {
+                    if (response.data.ok) {
+                        document.querySelector('.closeModalProducto').click();
+                        notie.alert({
+                            type: 'success',
+                            text: response.data.mensaje,
+                        });
+                    } else {
+                        notie.alert({
+                            type: 'error',
+                            text: response.data.mensaje,
+                        });
+                    }
+                });
+            } catch (error) {
+                console.log(error);
+            }           
         }
     }
     return (
         <div className="principalBody">
             <div className="modal-header">
-                <h5 className="modal-title" id="tituloModal">{tituloModal === "" ? "Actualizar producto" : tituloModal}</h5>
+                <h5 className="modal-title" id="tituloModal">{tituloModal}</h5>
                 <button
                     type="button"
                     className="btn-close closeModalProducto"
                     data-bs-dismiss="modal"
                     aria-label="Close"
+                    onClick={handleCerrar}
                 ></button>
             </div>
             <form onSubmit={handleSubmit}>
@@ -114,7 +140,7 @@ function ModalProducto(props) {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" className="btn btn-secondary" onClick={handleCerrar} data-bs-dismiss="modal">Cerrar</button>
                     <input type="submit" className="btn btn-primary" disabled={isDisabled} value="Guardar" />
                 </div>
             </form>

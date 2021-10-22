@@ -5,7 +5,6 @@ function EliminarProducto(props) {
     const {id, sendData} = props;
     const handleEliminar = e => {
         let idProductoEliminar = e.target.getAttribute("_id");
-        sessionStorage.setItem("idProductoEliminar", idProductoEliminar);
         sendData(idProductoEliminar);
     }
     return (

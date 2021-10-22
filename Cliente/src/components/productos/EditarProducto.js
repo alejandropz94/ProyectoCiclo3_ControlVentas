@@ -4,8 +4,6 @@ function EditarProducto(props) {
     const {id, sendDataEditar} = props;
     const handleEditar = e => {
         let idProductoEditar = e.target.getAttribute("_id");
-        console.log("id editar", idProductoEditar);
-        sessionStorage.setItem("idProductoEditar", idProductoEditar);
         sendDataEditar(idProductoEditar);
     }
     return (
