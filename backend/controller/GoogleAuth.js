@@ -5,8 +5,51 @@ const Usuario = require('../models/Usuario');
 const gAuth = async (req, res = response) =>{
 
     const rol = "No-asignado";
-    const estado = false;
-    const {uid: idToken, name, email} = req
+    const estado = "pendiente";
+    const {uid: idToken, name, email} = req;
+
+    try{
+        let usuario = await Usuario.findOne({email});
+        //si no existe el usuario
+        if(!usuario){
+            usuario = new Usuario({
+                nombre:name,
+                email:email,
+                rol,
+                estado
+            });
+
+            console.log(usuario);
+
+            const usuarioCreado = await usuario.save();
+                res.status(201).json({
+                    ok: true,
+                    msg: 'Usuario creado con exito',
+                    uid: usuarioCreado.id,
+                    name: usuarioCreado.name
+                });
+        }else{
+            if(usuario.estado == "pendiente" && usuario.rol === 'No-asignado'){
+                res.status(401).json({
+                    ok: false,
+                    msg: 'Usuario no autorizado y rol definido!'
+                });
+            }else{
+                const Token = await generateJWT(usuario.id, usuario.name);
+                res.json({
+                    ok: true,
+                    msg:'Ok',
+                    uid:usuario.id,
+                    name:usuario.name,
+                    Token
+                });
+            }
+        }
+    }catch (error){
+
+    }
+
+    
 
     /*try {
         

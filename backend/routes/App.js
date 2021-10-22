@@ -33,7 +33,11 @@ app.delete("/deleteVenta", ventas.deleteVenta);
 
 app.get("/getUsuarios" , usuarios.getUsuarios);
 
-app.post("/addUsuario" , usuarios.addUsuario);
+//Get usuario by id
+
+app.get("/getUsuarioById", usuarios.getUsuarioById);
+
+// app.post("/addUsuario" , usuarios.addUsuario);
 
 app.put("/editUsuario" , usuarios.editUsuario);
 
