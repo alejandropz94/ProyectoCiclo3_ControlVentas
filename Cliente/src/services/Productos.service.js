@@ -49,3 +49,16 @@ export const getProductoByIdSE = async function (id) {
         throw new Error(error);
     }
 }
+
+export const updatProductoSE = async function (producto) {
+    try {
+        return await axios({
+            method: 'PUT',
+            url: 'http://localhost:4000/api/editProducto',
+            data: producto,
+            headers: { "x-token" : sessionStorage.getItem("token")}
+        });
+    } catch (error) {
+        throw new Error(error);
+    }
+}

@@ -8,7 +8,6 @@ function ModalEliminarProducto(props) {
     const handleEliminar = e => {
         let objId = { "_id": idProductoEliminar };
         deleteProductoSE(objId).then(response => {
-            console.log(response);
             if (response.data.ok) {
                 notie.alert({
                     type: 'success',

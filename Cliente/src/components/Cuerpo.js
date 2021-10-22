@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import '../Style/estilos.css'
-import BotonIngresarUsuario from './BotonIngresarUsuario';
 import CuerpoTablaUsuario from './CuerpoTablaUsuario';
 import EncabezadoTablaUsuario from './EncabezadoTablaUsuario';
 import { Fragment } from 'react/cjs/react.production.min';
-import ModalHeader from './ModalHeader';
-import ModalFooter from './ModalFooter';
-import ModalBody from './ModalBody';
 import ModalEliminarUsuario from './ModalEliminarUsuario';
 import ModalUsuario from './ModalUsuario';
 
@@ -36,14 +32,6 @@ function Cuerpo () {
                 <div className ="col col-lg-10">
                   <div className ="row">
                     <div className ="col-auto">
-                    <button
-                      className="btn btn-success mb-3"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalUsuario"
-                      onClick={e => setTituloModal("Crear un usuario nuevo")}
-                    >
-                  Crear Usuario
-                </button>
                     </div>
                     
                   </div>

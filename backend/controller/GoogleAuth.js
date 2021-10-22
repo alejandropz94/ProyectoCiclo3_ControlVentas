@@ -5,60 +5,47 @@ const Usuario = require('../models/Usuario');
 const gAuth = async (req, res = response) =>{
 
     const rol = "No-asignado";
-    const estado = false;
-    const {uid: idToken, name, email} = req
+    const estado = "pendiente";
+    const {uid: idToken, name, email} = req;
 
-    /*try {
-        
+    try{
         let usuario = await Usuario.findOne({email});
+        //si no existe el usuario
+        if(!usuario){
+            usuario = new Usuario({
+                nombre:name,
+                email:email,
+                rol,
+                estado
+            });
 
-        if(usuario){
-            if(usuario.rol.name === 'No-asignado'){
+            const usuarioCreado = await usuario.save();
+                res.status(201).json({
+                    ok: true,
+                    msg: 'Usuario creado con exito',
+                    uid: usuarioCreado.id,
+                    name: usuarioCreado.nombre
+                });
+        }else{
+            if(usuario.estado == "pendiente" && usuario.rol === 'No-asignado'){
                 res.status(401).json({
                     ok: false,
-                    msg: 'Usuario no autorizado por el admin'
+                    msg: 'Usuario no autorizado y rol definido!'
                 });
             }else{
-              const Token = await generateJWT(usuario.id, usuario.name);
-                re.json({
+                const Token = await generateJWT(usuario._id, usuario.nombre);
+                res.json({
                     ok: true,
                     msg:'Ok',
-                    uid:usuario.id,
-                    name:usuario.name,
+                    uid:usuario._id,
+                    nombre:usuario.nombre,
                     Token
                 });
             }
-        }else{
-            usuario = new Usuario({
-                nombre:name,
-                mail:email,
-                estado,
-                rol
-            });
-
-            const newUser = await usuario.save();
-            res.status(201).json({
-                ok: true,
-                msg: 'Usuario creado con exito',
-                uid: newUser.id,
-                name: newUser.name
-            })
         }
-
-
-    } catch (error) {
-        
-    }*/
-
-    
-   //Generacion del token
-    const Token = await generateJWT(idToken, name);
-    res.json({
-        msg: "Respuesta desde Google Auth",
-        nombre:name,
-        mail:email,
-        Token
-    })
+    }catch (error){
+        console.log(error);
+    }
 }
 
 const renovarToken = async (req, res=response) =>{

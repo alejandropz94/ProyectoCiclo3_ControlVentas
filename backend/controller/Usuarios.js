@@ -21,32 +21,44 @@ let getUsuarios = async function(req, res) {
     });
 }
 
-let addUsuario = async function(req, res) {
-    const {documento, nombre, rol, estado} = req.body;
-    const usuario = await new Usuario({
-        documento,
-        nombre,
-        rol,
-        estado
-    });
-    try{
-        usuario.save();
-        res.status(200).send({ok: true, mensaje: "Usuario registrado correctamente"});
-    }catch(error) {
-        res.status(500).send({ok: false, mensaje: "Error al registrar usuario", error: error});
-    }
+//Buscar por id
+let getUsuarioById = async function(req, res) {
+    const user = await Usuario.findById(req.params.id);
+    res.json(user);
 }
 
+
+// let addUsuario = async function(req, res) {
+//     const {documento, nombre, rol, estado} = req.body;
+//     const usuario = await new Usuario({
+//         documento,
+//         nombre,
+//         rol,
+//         estado
+//     });
+//     try{
+//         usuario.save();
+//         res.status(200).send({ok: true, mensaje: "Usuario registrado correctamente"});
+//     }catch(error) {
+//         res.status(500).send({ok: false, mensaje: "Error al registrar usuario", error: error});
+//     }
+// }
+
 let editUsuario = async function (req, res) {
-    const {_id, documento, nombre, rol, estado} = req.body;
+    const {_id, email, nombre, rol, estado} = req.body;
     const editUsuario= {
-         documento, 
+         email, 
          nombre, 
          rol, 
          estado,
     }
-    const usuario = await Usuario.updateOne({_id : _id}, editUsuario);
-    res.send("Usuario editado con éxito")
+    try{
+        console.log(_id);
+        const usuario = await Usuario.updateOne({_id : _id}, editUsuario);
+        res.status(200).send({ok: true, mensaje: "Usuario actualizado correctamente"});
+    }catch(error) {
+        res.status(500).send({ok: false, mensaje: "Error al actualizar usuario", error: error});
+    }
 }
 
 let deleteUsuario = async function (req, res) {
@@ -65,7 +77,9 @@ let deleteUsuario = async function (req, res) {
 
 module.exports = {
     getUsuarios,
-    addUsuario,
+    // addUsuario,
+    //exportar uduario by id
+    getUsuarioById,
     editUsuario,
     deleteUsuario
 }

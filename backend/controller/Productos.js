@@ -55,12 +55,16 @@ let addProducto = async function(req, res) {
 }
 
 let editProducto = async function (req, res) {
-    const { _id, descripcion, valor_unitario, disponible } = req.body;
+    const { _id, descripcion, precio, disponible } = req.body;
     const editProducto = {
-        descripcion, valor_unitario, disponible
+        descripcion, valor_unitario: precio, disponible
     }
-    const producto = await Producto.updateOne({_id: id}, editProducto);
-    res.send("ok")
+    try {
+        const producto = await Producto.updateOne({_id: _id}, editProducto);
+        res.status(200).send({ok: true, mensaje: "Producto actualizado correctamente"});
+    } catch(error) {
+        res.status(500).send({ok: false, mensaje: "Error al actualizar producto", error: error});
+    }
 }
 
 let deleteProducto = async function (req, res) {
@@ -69,7 +73,6 @@ let deleteProducto = async function (req, res) {
         await Producto.findOneAndDelete({_id: id});
         res.status(200).send({ok: true, mensaje: "Producto eliminado correctamente"});
     }catch(error) {
-        console.log(error);
         res.status(500).send({ok: false, mensaje: "Error al eliminar producto", error: error});
     }
 }
