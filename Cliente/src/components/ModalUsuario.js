@@ -63,6 +63,7 @@ function ModalUsuario(props) {
                 console.log(error);
             }
             
+            
     }
     return (
         <div className="principalBody">
@@ -96,6 +97,7 @@ function ModalUsuario(props) {
                             <select class="form-select" onChange={e => setRol(e.target.value)}
                                 value={rol}>
                                     <option disabled selected>Seleccione</option>
+                                    <option value="No-asignado">No-asignado</option>
                                     <option value="administrador">Administrador</option>
                                     <option value="vendedor">Vendedor</option>
                                     
