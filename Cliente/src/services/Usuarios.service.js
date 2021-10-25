@@ -4,7 +4,7 @@ export const getUsuariosSE = async function () {
     try {
         return await axios({
             method: 'GET',
-            url: 'http://localhost:4000/api/getUsuarios',
+            url: `${process.env.REACT_APP_API_URL}/api/getUsuarios`,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch (error) {
@@ -16,7 +16,7 @@ export const addUsuarioSE = async function(usuario) {
     try {
         return await axios({
             method: 'POST',
-            url: 'http://localhost:4000/api/addUsuario',
+            url: `${process.env.REACT_APP_API_URL}/api/addUsuario`,
             data: usuario,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
@@ -29,7 +29,7 @@ export const deleteUsuarioSE = async function (id) {
     try {
         return await axios({
             method: 'DELETE',
-            url: 'http://localhost:4000/api/deleteUsuario',
+            url: `${process.env.REACT_APP_API_URL}/api/deleteUsuario`,
             data: id,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
@@ -42,7 +42,7 @@ export const getUsuarioByIdSE = async function (id) {
     try {
         return await axios({
             method: 'GET',
-            url: 'http://localhost:4000/api/getUsuarioById/'+id+'',
+            url: `${process.env.REACT_APP_API_URL}/api/getUsuarioById/${id}`,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch (error) {
@@ -54,7 +54,7 @@ export const updateUsuarioSE = async function (usuario) {
     try {
         return await axios({
             method: 'PUT',
-            url: 'http://localhost:4000/api/editUsuario',
+            url: `${process.env.REACT_APP_API_URL}/api/editUsuario`,
             data: usuario,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });

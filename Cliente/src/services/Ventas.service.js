@@ -4,7 +4,7 @@ export const getVentasSE = async function () {
     try {
         return await axios({
             method: 'GET',
-            url: 'http://localhost:4000/api/getVentas',
+            url: `${process.env.REACT_APP_API_URL}/api/getVentas`,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch (error) {
@@ -16,7 +16,7 @@ export const addVentaSE = async function(venta) {
     try {
         return await axios({
             method: 'POST',
-            url: 'http://localhost:4000/api/addVenta',
+            url: `${process.env.REACT_APP_API_URL}/api/addVenta`,
             data: venta,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
@@ -29,7 +29,7 @@ export const deleteVentaSE = async function (id) {
     try {
         return await axios({
             method: 'DELETE',
-            url: 'https://localhost:4000/api/deleteVenta',
+            url: `${process.env.REACT_APP_API_URL}/api/deleteVenta`,
             data: id,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });

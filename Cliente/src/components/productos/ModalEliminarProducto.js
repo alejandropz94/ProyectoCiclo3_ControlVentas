@@ -14,6 +14,7 @@ function ModalEliminarProducto(props) {
                     text: response.data.mensaje,
                 });
                 document.querySelector('.closeModalEliminar').click();
+                setTimeout(() => {window.location.href="/productos"}, 1500);
             } else {
                 notie.alert({
                     type: 'error',
