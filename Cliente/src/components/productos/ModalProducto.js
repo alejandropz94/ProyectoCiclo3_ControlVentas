@@ -32,13 +32,13 @@ function ModalProducto(props) {
 
     const getProductos = async function () {
         setEditar(true);
-        if (idProductoEditar != null && idProductoEditar != "") {
+        if (idProductoEditar !== null && idProductoEditar !== "") {
             setTituloModal("Actualizar producto");
             try {
                 const { data } = await getProductoByIdSE(idProductoEditar);
                 setDescripcion(data.productos.descripcion);
                 setPrecio(data.productos.valor_unitario);
-                setDisponible(data.productos.disponible == true ? 1 : 0);
+                setDisponible(data.productos.disponible === true ? 1 : 0);
             } catch (error) {
                 console.log(error);
             }
@@ -65,6 +65,8 @@ function ModalProducto(props) {
                             type: 'success',
                             text: response.data.mensaje,
                         });
+                        setTimeout(() => {window.location.href="/productos"}, 1500);
+                        
                     } else {
                         notie.alert({
                             type: 'error',
@@ -85,6 +87,7 @@ function ModalProducto(props) {
                             type: 'success',
                             text: response.data.mensaje,
                         });
+                        setTimeout(() => {window.location.href="/productos"}, 1500);
                     } else {
                         notie.alert({
                             type: 'error',

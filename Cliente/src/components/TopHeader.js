@@ -4,11 +4,16 @@ import Mision from '../assets/img/Mision.png'
 
 
 function TopHeader() {
+
+  const handleLogout = e => {
+    sessionStorage.clear();
+  }
+
   return (
     <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
         <div className="nv d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white bg-dark">
           <a
-            href="index.html"
+            href="/"
             className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
           >
             <img
@@ -117,16 +122,8 @@ function TopHeader() {
               aria-labelledby="dropdownUser1"
             >
               <li>
-                <a className="dropdown-item" href="/">
-                  Perfil
-                </a>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <a className="dropdown-item" href="/">
-                  Salir
+                <a className="dropdown-item" onClick={handleLogout} href="/">
+                  Cerrar sesión
                 </a>
               </li>
             </ul>

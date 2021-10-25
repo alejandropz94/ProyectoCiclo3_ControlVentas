@@ -4,7 +4,7 @@ export const getProductosSE = async function () {
     try {
         return await axios({
             method: 'GET',
-            url: 'http://localhost:4000/api/getProductos',
+            url: `${process.env.REACT_APP_API_URL}/api/getProductos`,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch (error) {
@@ -16,7 +16,7 @@ export const addProductoSE = async function(producto) {
     try {
         return await axios({
             method: 'POST',
-            url: 'http://localhost:4000/api/addProducto',
+            url: `${process.env.REACT_APP_API_URL}/api/addProducto`,
             data: producto,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
@@ -29,7 +29,7 @@ export const deleteProductoSE = async function (id) {
     try {
         return await axios({
             method: 'DELETE',
-            url: 'http://localhost:4000/api/deleteProducto',
+            url: `${process.env.REACT_APP_API_URL}/api/deleteProducto`,
             data: id,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
@@ -42,7 +42,7 @@ export const getProductoByIdSE = async function (id) {
     try {
         return await axios({
             method: 'GET',
-            url: 'http://localhost:4000/api/getProductoById/'+id+'',
+            url: `${process.env.REACT_APP_API_URL}/api/getProductoById/${id}`,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });
     } catch (error) {
@@ -54,7 +54,7 @@ export const updatProductoSE = async function (producto) {
     try {
         return await axios({
             method: 'PUT',
-            url: 'http://localhost:4000/api/editProducto',
+            url: `${process.env.REACT_APP_API_URL}/api/editProducto`,
             data: producto,
             headers: { "x-token" : sessionStorage.getItem("token")}
         });

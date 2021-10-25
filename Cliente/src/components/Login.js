@@ -3,6 +3,8 @@ import Mision from '../assets/img/Mision.png'
 import GoogleLogin from 'react-google-login';
 import axios from 'axios';
 import '../Style/estilos.css'
+import notie from 'notie';
+import 'notie/dist/notie.css';
 
 const Login = () => {
 
@@ -11,16 +13,23 @@ const Login = () => {
 
         let response = await axios({
             method: 'POST',
-            url: 'http://localhost:4000/api/auth/google/login',
+            url: `${process.env.REACT_APP_API_URL}/api/auth/google/login`,
             headers: {
                 'Authorization': `Bearer ${resp.tokenId}`
             }
+        }).then(response => {
+            if (response.data.Token) {
+                sessionStorage.setItem("token", response.data.Token);
+                sessionStorage.setItem("nombre", response.data.nombre);
+                window.location.href = "/productos";
+            }
+        }).catch(err => {
+            notie.alert({
+                type: 'error',
+                text: 'No está autorizado para ingresar',
+            });
         });
-        if (response.data.Token) {
-            sessionStorage.setItem("token", response.data.Token);
-            sessionStorage.setItem("nombre", response.data.nombre);
-            window.location.href = "/productos";
-        }
+
 
 
     }
