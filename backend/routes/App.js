@@ -43,4 +43,6 @@ app.put("/editUsuario" , usuarios.editUsuario);
 
 app.delete("/deleteUsuario" , usuarios.deleteUsuario);
 
+app.get("/getVentaById/:id", ventas.getVentaById);
+
 module.exports = app;
