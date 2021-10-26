@@ -25,6 +25,19 @@ export const addVentaSE = async function(venta) {
     }
 }
 
+export const getVentaByIdSE = async function (id) {
+    try {
+        return await axios({
+            method: 'GET',
+            url: `${process.env.REACT_APP_API_URL}/api/getVentaById/${id}`,
+            headers: { "x-token" : sessionStorage.getItem("token")}
+        });
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+
 export const deleteVentaSE = async function (id) {
     try {
         return await axios({
@@ -35,5 +48,18 @@ export const deleteVentaSE = async function (id) {
         });
     } catch(error) {
         console.log(error);
+    }
+}
+
+export const updateVentaSE = async function (venta) {
+    try {
+        return await axios({
+            method: 'PUT',
+            url: `${process.env.REACT_APP_API_URL}/api/editVenta`,
+            data: venta,
+            headers: { "x-token" : sessionStorage.getItem("token")}
+        });
+    } catch (error) {
+        throw new Error(error);
     }
 }

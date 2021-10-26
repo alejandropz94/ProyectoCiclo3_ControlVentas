@@ -43,7 +43,7 @@ let addVenta = async function(req, res) {
 }
 
 let editVenta = async function (req, res) {
-    const {_id, codigo_venta, id_producto, medio_pago, fecha_venta, cliente, ide_cliente, vendedor, estado, valor_total} = req.body;
+    const { _id, codigo_venta, id_producto, medio_pago, fecha_venta, cliente, ide_cliente, vendedor, estado, valor_total} = req.body;
     const editVenta = {
         codigo_venta,
         id_producto,
@@ -55,24 +55,51 @@ let editVenta = async function (req, res) {
         estado, 
         valor_total,
     }
-    const venta = await Venta.updateOne({_id: _id}, editVenta);
-    res.send("ok")
+    console.log(_id)
+    try {
+        const venta = await Venta.updateOne({_id: _id}, editVenta);
+        res.status(200).send({ok: true, mensaje: "Venta actualizada correctamente"});
+    } catch(error) {
+        res.status(500).send({ok: false, mensaje: "Error al actualizar una venta", error: error});
+    }
 }
 
 let deleteVenta = async function (req, res) {
     try{
         let id = req.body;
         await Venta.findOneAndDelete({_id: id});
-        res.status(200).send({ok: true, mensaje: "Producto eliminado correctamente"});
+        res.status(200).send({ok: true, mensaje: "Venta  eliminada correctamente"});
     }catch(error) {
         console.log(error);
-        res.status(500).send({ok: false, mensaje: "Error al eliminar producto", error: error});
+        res.status(500).send({ok: false, mensaje: "Error al eliminar la venta", error: error});
     }
 }
+
+let getVentaById = async function(req, res) {
+    const model = await Venta.findById(req.params.id);
+    Venta.countDocuments({}, (err, total) => {
+        if(err) {
+            return res.json({
+                status: 400,
+                mensaje: "Error al obtener una  venta por id",
+                err: err
+            });
+        }
+            res.json({
+                status: 200,
+                total: total,
+                ventas: model
+            });
+    });
+}
+
+
 
 module.exports = {
     getVentas,
     addVenta,
     editVenta,
     deleteVenta,
+    getVentaById
+
 }

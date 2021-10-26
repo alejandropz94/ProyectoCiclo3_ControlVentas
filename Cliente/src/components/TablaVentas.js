@@ -3,7 +3,16 @@ import ActualizarVenta from './ActualizarVenta';
 import EliminarVenta from './EliminarVenta';
 import {getVentasSE} from '../services/Ventas.service';
 
-function TablaVentas() {
+function TablaVentas(props) {
+    const { textoBuscar, setTextoBuscar, sendData2, sendDataEditar2} = props
+
+    function getData(val){
+        sendData2(val);
+    }
+    function getDataEditar(val){
+        sendDataEditar2(val);
+    }
+
     useEffect(() => {
         getVentas();
     }, []);
@@ -19,7 +28,15 @@ function TablaVentas() {
         }
     }
     return (
-        ventas.map((venta, index) => 
+        ventas.filter(function (item) {
+            if (item.documento === undefined) {
+                item.documento = "";
+            }
+            if (textoBuscar === "" || item.documento.includes(textoBuscar) || item._id.includes(textoBuscar)) {
+                return true;
+            }
+
+        }).map((venta, index) => 
         <tr key={venta._id}>
                 <td>{venta._id}</td>
                 <td>{venta.id_producto != null ? venta.id_producto.descripcion : ""}</td>
@@ -32,8 +49,8 @@ function TablaVentas() {
                 <td>{venta.valor_total}</td>
                 <td>
                     <div className="btn-group btn-group-sm">
-                        <ActualizarVenta></ActualizarVenta>
-                        <EliminarVenta></EliminarVenta>
+                        <ActualizarVenta id={venta._id} sendDataEditar={getDataEditar}></ActualizarVenta>
+                        <EliminarVenta id={venta._id} sendData={getData}></EliminarVenta>
                     </div>
                     
                 </td>

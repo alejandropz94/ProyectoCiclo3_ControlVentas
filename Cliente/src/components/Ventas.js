@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../Style/estilos.css';
 import BotonIngresarVenta from './BotonIngresarVenta';
 import TablaVentas from './TablaVentas';
@@ -11,6 +11,22 @@ import ModalVentas from './ModalVentas';
 import ModalEliminarVenta from './ModalEliminarVenta';
 
 function Ventas () {
+
+  const [tituloModal, setTituloModal] = useState("");
+  const [textoBuscar, setTextoBuscar] = useState("");
+  const [idVentaEliminar, setIdVentaEliminar] = useState("");
+  const [statusEliminar, setStatusEliminar] = useState("");
+  const [idVentaEditar, setIdVentaEditar] = useState("");
+
+  function getData2(val){
+    setIdVentaEliminar(val);
+  }  
+
+  function getDataEditar2(val) {
+    setIdVentaEditar(val);
+  }
+
+
     return (
       <Fragment>
         <div className = "col-xl-10 col-md-10">
@@ -19,13 +35,21 @@ function Ventas () {
                 <div className ="col col-lg-10">
                   <div className ="row">
                     <div className ="col-auto">
-                      <BotonIngresarVenta></BotonIngresarVenta>
+                    <button
+                      className="btn btn-success mb-3"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalVentas"
+                      onClick={e => setTituloModal("Crear una Venta nuevo")}
+                    >
+                  Crear Venta
+                </button>
                     </div>
                   </div>
                   <table className="table table-striped">
                     <EncabezadoTablaVentas></EncabezadoTablaVentas>
                     <tbody>
-                      <TablaVentas></TablaVentas>
+                      <TablaVentas textoBuscar={textoBuscar} setTextoBuscar={setTextoBuscar} 
+                      sendData2={getData2} sendDataEditar2={getDataEditar2}></TablaVentas>
                     </tbody>
                   </table>
                 </div>
@@ -33,7 +57,7 @@ function Ventas () {
         </div>
         {/* Modal Fade */}
         <div  className="modal fade"
-              id="ModalVentas"
+              id="modalVentas"
               tabindex="-1"
               data-bs-backdrop="static"
               data-bs-keyboard="false"
@@ -42,13 +66,14 @@ function Ventas () {
               >
           <div className="modal-dialog">
             <div className="modal-content">
-                <ModalTitle></ModalTitle>
-                <ModalVentas></ModalVentas>                
+                
+                <ModalVentas tituloModal={tituloModal} setTituloModal={setTituloModal} 
+            idVentaEditar={idVentaEditar} setIdVentaEditar={setIdVentaEditar}></ModalVentas>                
             </div>
           </div>
         </div>
         <div className="modal fade"
-        id="ModalEliminar"
+        id="modalEliminar" 
         tabindex="-1"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -57,7 +82,7 @@ function Ventas () {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <ModalEliminarVenta></ModalEliminarVenta>
+            <ModalEliminarVenta idVentaEliminar={idVentaEliminar} setIdVentaEliminar={setIdVentaEliminar}></ModalEliminarVenta>
           </div>
         </div>
       </div>

@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { addVentaSE } from '../services/Ventas.service';
+import { addVentaSE,getVentaByIdSE,updateVentaSE } from '../services/Ventas.service';
 import notie from 'notie';
 import 'notie/dist/notie.css';
 import { getProductosSE } from '../services/Productos.service';
 
 
-
-/*import React, { useEffect, useState } from 'react';
-import { addVentaSE } from '../../services/Ventas.service';
-import { getVentaByIdSE } from '../../services/Ventas.service';
-import notie from 'notie';
-import 'notie/dist/notie.css';
-*/
 function ModalVenta(props) {
 
     const { tituloModal, setTituloModal, idVentaEditar, setIdVentaEditar } = props;
@@ -24,19 +17,27 @@ function ModalVenta(props) {
     const [estado, setEstado] = useState("");
     const [valor_total, setValor_total] = useState("");
     const [medio_pago, setMedio_pago] = useState("");
+    const [editar, setEditar] = useState(false);
+    
+    console.log(idVentaEditar);
 
-/*
+
     let isDisabled = false;
-    let editar = 0;
-    if (codigo_venta === "" || id_producto === "" || fecha_venta === ""
+    
+    if ( id_producto === "" || fecha_venta === ""
      || cliente === "" || ide_cliente === "" || vendedor === ""|| estado === ""|| valor_total === "") {
         isDisabled = true;
     } else {
         isDisabled = false;
-    }   */
+    }   
+
     useEffect(() => {
         getProductos();
     }, []);
+
+    useEffect(() => {
+        getVenta();
+    }, [idVentaEditar]);
 
     const [productos, setProductos] = useState([]);
     const getProductos = async function () {
@@ -47,9 +48,35 @@ function ModalVenta(props) {
             console.log(error);
         }
     }
+
+    const getVenta = async function () {
+        setEditar(true);
+        if (idVentaEditar !== null && idVentaEditar !== "") {
+            setTituloModal("Actualizar Venta");
+            try {
+                const { data } = await getVentaByIdSE(idVentaEditar);
+                setId_producto(data.ventas.id_producto);
+                setFecha_venta(data.ventas.fecha_venta);
+                setCliente(data.ventas.cliente);
+                setIde_cliente(data.ventas.ide_cliente);
+                setVendedor(data.ventas.vendedor);
+                setEstado(data.ventas.estado);
+                setValor_total(data.ventas.valor_total);
+                setMedio_pago(data.ventas.medio_pago);
+                                
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            setEditar(false);
+        }
+    }
+
+
     const handleSubmit = e => {
         e.preventDefault();
-        const venta = {            
+        const venta = {
+            _id:idVentaEditar,            
             id_producto,
             medio_pago,
             fecha_venta,
@@ -60,6 +87,7 @@ function ModalVenta(props) {
             valor_total            
         };
         console.log(venta);
+        if (!editar) {
             try {
                 addVentaSE(venta).then(response => {
                     if (response.data.ok) {
@@ -68,6 +96,7 @@ function ModalVenta(props) {
                             type: 'success',
                             text: response.data.mensaje,
                         });
+                        setTimeout(() => {window.location.href="/ventas"}, 1500);
                         
                     } else {
                         notie.alert({
@@ -79,10 +108,45 @@ function ModalVenta(props) {
             } catch (error) {
                 console.log(error);
             }
+            
+        } else {
+            try {
+                updateVentaSE(venta).then(response => {
+                    if (response.data.ok) {
+                        document.querySelector('.closeModalVenta').click();
+                        notie.alert({
+                            type: 'success',
+                            text: response.data.mensaje,
+                        });
+                        setTimeout(() => {window.location.href="/ventas"}, 1500);
+                    } else {
+                        notie.alert({
+                            type: 'error',
+                            text: response.data.mensaje,
+                        });
+                    }
+                });
+            } catch (error) {
+                console.log(error);
+            }           
+        }
         } 
-    
+        const handleCerrar = e => {
+            setIdVentaEditar("");
+           
+        }
     return (
         <div className="modal-body">
+            <div className="modal-header">
+                <h5 className="modal-title" id="tituloModal">{tituloModal}</h5>
+                <button
+                    type="button"
+                    className="btn-close closeModalVenta"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    onClick={handleCerrar}
+                ></button>
+            </div>
             <form onSubmit={handleSubmit}>           
             <div className="row">
                 
@@ -162,8 +226,10 @@ function ModalVenta(props) {
                             />
                 </div>
                 <div className="modal-footer">
-            <button  type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <input type="submit" className="btn btn-primary"  value="Guardar" />
+            
+            <button  type="button" className="btn btn-secondary" onClick={handleCerrar}  data-bs-dismiss="modal">Cerrar</button>
+            
+            <input type="submit" className="btn btn-primary" disabled ={isDisabled}  value="Guardar" />
         </div>
             </div>
             </form>
